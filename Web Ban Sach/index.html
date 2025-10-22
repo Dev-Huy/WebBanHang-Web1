@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Web Ban Sach</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/phan2.css">
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- <button id="scroll_top">Lên trên</button> -->
+    <div id="header_nav">
+        <ul>
+            <li><a href="dangky.html">Đăng ký</a></li>
+            <li><a href="dangnhap.html">Đăng nhập</a></li>
+        </ul>
+    </div>
+    <div id="header_subnav">
+        <div id="logo">
+            <img src="img/book_icon.png" alt="">
+        </div>
+        <div id="menu">
+            <button id="menu_btn"><img src="img/menu_icon.png" alt=""></button>
+            <ul>
+                <li id="sach_truyen">
+                    <a href="#" id="sach_truyen_btn">Sách - Truyện</a>
+                    <ul id="sach_truyen_list">
+                        <li><a href="#" id="kinhdi">Kinh Dị</a></li>
+                        <li><a href="#" id="haikich">Hài Kịch</a></li>
+                        <li><a href="#" id="trinhtham">Trinh Thám</a></li>
+                    </ul>
+                </li>
+                <li id="dungcuve">
+                    <a href="#" id="dungcuve_btn">Dụng cụ vẽ</a>
+                    <ul id="dungcuve_list">
+                        <li><a href="" id="">Dụng cụ học tập</a></li>
+                        <li><a href="">Họa cụ</a></li>
+                    </ul>
+                </li>
+                <li id="dochoi">
+                    <a href="#" id="dochoi_btn">Đồ Chơi</a>
+                </li>
+            </ul>
+        </div>
+        <div id="search_form">
+            <input type="search" id="search" placeholder="Tìm kiếm..." />
+            <button id="submit_btn"><img src="img/search_icon.png" alt="Tìm kiếm"></button>
+        </div>
+        <div id="shop">
+            <button><img src="img/shop_cart.png" alt=""></button>
+            <div id="shop_form"></div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- Slider main container -->
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide"><img
+                        src="https://bookbuy.vn/Res/Images/Album/460ee7ba-2b4e-45db-9946-6268d5948892.jpg?w=880&scale=both&h=320&mode=crop">
+                </div>
+                <div class="swiper-slide"><img
+                        src="https://bookbuy.vn/Res/Images/Album/fc327f22-6650-4b7e-8ede-4b6cacda9e89.jpg?w=880&scale=both&h=320&mode=crop">
+                </div>
+                <div class="swiper-slide"><img
+                        src="https://bookbuy.vn/Res/Images/Album/06ba7a2e-4c20-4a40-bcac-d08674a42762.jpg?w=880&scale=both&h=320&mode=crop">
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            autoplay: {
+                Delay: 1000,
+                disableOnInteration: false,
+            },
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        }); 
+    </script>
+    <div class="listimage">
+        <div class="image">
+            <img src="https://bookbuy.vn/Res/Images/Banner/e951a424-db31-4ac6-ae92-2c275b3de96b.jpg?width=500&format=jpg&scale=both&quality=90"
+                alt="anh1">
+            <div class="overlay">Bút Sơn Công Nghiệp</div>
+        </div>
+        <div class="image">
+            <img src="https://bookbuy.vn/Res/Images/Banner/02b318e9-7b8f-4fc1-bc54-549a789cd9db.jpg?width=500&format=jpg&scale=both&quality=90"
+                alt="anh2">
+            <div class="overlay">Sổ vẽ A5</div>
+        </div>
+        <div class="image">
+            <img src="https://bookbuy.vn/Res/Images/Banner/866ec12b-6830-4f10-b2c6-0e01b8cb873c.jpg?width=500&format=jpg&scale=both&quality=90"
+                alt="anh3">
+            <div class="overlay">Xà Bông Thiên Nhiên</div>
+        </div>
+    </div>
+    <div class="p-4 bg-gray-100"> <!---->
+        <div id="main-content" class="w-[95%] max-w-5xl mx-auto">
+            <div class="inline-block p-2 mb-6 border border-white bg-white shadow-md rounded-lg">
+                <h1 class="text-xl font-bold text-gray-800 tracking-wider whitespace-nowrap">SÁCH BÁN CHẠY</h1>
+            </div>
+
+            <div class="p-6 border border-white bg-white shadow-xl rounded-xl">
+                <input type="radio" id="page-1-radio" name="product-page" checked>
+                <input type="radio" id="page-2-radio" name="product-page">
+
+                <div id="product-list" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div
+                        class="product-card product-page-1 text-center p-4 border border-gray-100 rounded-lg shadow-sm cursor-pointer transition duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
+                        <img src="https://nxbhcm.com.vn/Image/Biasach/tamlyhocvetien.jpg" alt="Tâm Lý Học Về Tiền"
+                            class="w-full h-auto object-cover mb-4 rounded-md"
+                            onerror="this.onerror=null; this.src='https:/placehold.co/200x300/CCCCCC/000?text=Lỗi+Ảnh';">
+                        <p class="font-semibold text-gray-700 truncate">Tâm Lý Học Về Tiền</p>
+                        <p class="text-lg font-bold text-red-600 mt-1">189.000 VNĐ</p>
+                    </div>
+                    <div
+                        class="product-card product-page-1 text-center p-4 border border-gray-100 rounded-lg shadow-sm cursor-pointer transition duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSc54P8MFoQ9g-x45Ccumc16HYThHlP83uoTeFT-k9RpulGQs2veEuqyfzFSGTjU-IWwJMKDi82j9dFaqfqxn46BuPqsS7s7rEhP4BA9mDME2sBDd7e8omp"
+                            alt="Phi Lý Trí" class="w-full h-auto object-cover mb-4 rounded-md"
+                            onerror="this.onerror=null; this.src='https:/placehold.co/200x300/CCCCCC/000?text=Lỗi+Ảnh';">
+                        <p class="font-semibold text-gray-700 truncate">Phi Lý Trí</p>
+                        <p class="text-lg font-bold text-red-600 mt-1">169.000 VNĐ</p>
+                    </div>
+                    <div
+                        class="product-card product-page-1 text-center p-4 border border-gray-100 rounded-lg shadow-sm cursor-pointer transition duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSzHeMBwgodEf6ov3_670WPITb-0L33llddMt0zLC7_UTmsNwx1lr1gA1eZug1Pq3Ey10FwUG5WV90bR2KzOfj3LurFd2XA1g4aTNJik3RPFF99fDBPscpq48TR&usqp=CAc"
+                            alt="Sức Mạnh Của Hiện Tại" class="w-full h-auto object-cover mb-4 rounded-md"
+                            onerror="this.onerror=null; this.src='https:/placehold.co/200x300/CCCCCC/000?text=Lỗi+Ảnh';">
+                        <p class="font-semibold text-gray-700 truncate">Sức Mạnh Của Hiện Tại</p>
+                        <p class="text-lg font-bold text-red-600 mt-1">168.000 VNĐ</p>
+                    </div>
+                    <div
+                        class="product-card product-page-1 text-center p-4 border border-gray-100 rounded-lg shadow-sm cursor-pointer transition duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTZ-H-WIEAWLJUJaYVqdXqShS7ON-U3JsV5JpHWEi0gdySGc2c_tNCYoVXjNvGpUAZ77O55LzNGGIISyXaOICI4AXLqkgbyko9lDUSP3jS1-9L5OS2Xs4JIF2X12owgU5ctFnyVu7c&usqp=CAc"
+                            alt="Tâm Lý Học Đám Đông" class="w-full h-auto object-cover mb-4 rounded-md"
+                            onerror="this.onerror=null; this.src='https:/placehold.co/200x300/CCCCCC/000?text=Lỗi+Ảnh';">
+                        <p class="font-semibold text-gray-700 truncate">Tâm Lý Học Đám Đông</p>
+                        <p class="text-lg font-bold text-red-600 mt-1">149.000 VNĐ</p>
+                    </div>
+
+                    <div
+                        class="product-card product-page-2 text-center p-4 border border-gray-100 rounded-lg shadow-sm cursor-pointer transition duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ95vvMgOta-MDwUjx0skM-HzbJsb6-B1IqIZat45XiKe5cs7mW5gY1JxAGWTA2-iyQWJSODnHehsK9_KOD4HMArkwPFiL5LAxFabkiNFZkoizN1ZGjITujWxRGe7BWLSGY3Fw15FQ&usqp=CAc"
+                            alt="Thói Quen Nguyên Tử" class="w-full h-auto object-cover mb-4 rounded-md"
+                            onerror="this.onerror=null; this.src='https:/placehold.co/200x300/CCCCCC/000?text=Lỗi+Ảnh';">
+                        <p class="font-semibold text-gray-700 truncate">Thói Quen Nguyên Tử</p>
+                        <p class="text-lg font-bold text-red-600 mt-1">189.000 VNĐ</p>
+                    </div>
+                    <div
+                        class="product-card product-page-2 text-center p-4 border border-gray-100 rounded-lg shadow-sm cursor-pointer transition duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSReQgQloF62mrjj7w9dBp3cSRn2dm4YrLD8kyOBlH0YUKlbQTdmxSFCLL3vFxssFCyrX6WmjkMtPNsfkBIui4Oftk6qF4g8R6sysWSmM86hscFxbfaYfwYbZEswh8qXZIJPt8M40w&usqp=CAc"
+                            alt="Trí Tuệ Xúc Cảm" class="w-full h-auto object-cover mb-4 rounded-md"
+                            onerror="this.onerror=null; this.src='https:/placehold.co/200x300/CCCCCC/000?text=Lỗi+Ảnh';">
+                        <p class="font-semibold text-gray-700 truncate">Trí Tuệ Xúc Cảm</p>
+                        <p class="text-lg font-bold text-red-600 mt-1">199.000 VNĐ</p>
+                    </div>
+                    <div
+                        class="product-card product-page-2 text-center p-4 border border-gray-100 rounded-lg shadow-sm cursor-pointer transition duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRjvjPUGjK8PUrcoE5-vaypd0C_PERWbkbF_JXpFsX_2fHjpPXyvGaMaxX9tox_FD_EyFVv9dcfVGh57RgqtMqx30vUOBinKvHtr9PwlXnG4Cju7oDTSU6oFyxycg_x2GkdrEShkLw&usqp=CAc"
+                            alt="Đọc Vị Bất Kỳ Ai" class="w-full h-auto object-cover mb-4 rounded-md"
+                            onerror="this.onerror=null; this.src='https:/placehold.co/200x300/CCCCCC/000?text=Lỗi+Ảnh';">
+                        <p class="font-semibold text-gray-700 truncate">Đọc Vị Bất Kỳ Ai</p>
+                        <p class="text-lg font-bold text-red-600 mt-1">89.000 VNĐ</p>
+                    </div>
+                    <div
+                        class="product-card product-page-2 text-center p-4 border border-gray-100 rounded-lg shadow-sm cursor-pointer transition duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQzvOuv-CIQEwLwhH-0yeCG0Qo135rC5iEpgTF3VAkIqaQ31JPV6g4K_KAYi63yXtUAXX_gHflqbChxXOcivTreaWrBEIWpVjvdPSXf39kFiAUW37vg6ZpoCBzjoeu9QfpBVcP4_w&usqp=CAc"
+                            alt="Đi Tìm Lẽ Sống" class="w-full h-auto object-cover mb-4 rounded-md"
+                            onerror="this.onerror=null; this.src='https:/placehold.co/200x300/CCCCCC/000?text=Lỗi+Ảnh';">
+                        <p class="font-semibold text-gray-700 truncate">Đi Tìm Lẽ Sống</p>
+                        <p class="text-lg font-bold text-red-600 mt-1">88.000 VNĐ</p>
+                    </div>
+                </div>
+
+                <div id="pagination-controls" class="flex justify-center items-center space-x-4 mt-6">
+                    <label for="page-1-radio" id="nav-prev"
+                        class="p-3 rounded-full shadow-lg transition duration-150 focus:outline-none focus:ring-2 cursor-pointer bg-gray-100 text-gray-600 hover:bg-gray-200 focus:ring-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </label>
+                    <span id="page-info" class="text-gray-600 font-medium"></span>
+
+                    <label for="page-2-radio" id="nav-next"
+                        class="p-3 rounded-full shadow-lg transition duration-150 focus:outline-none focus:ring-2 cursor-pointer bg-red-600 text-white hover:bg-red-700 focus:ring-red-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="overlayer"></div>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

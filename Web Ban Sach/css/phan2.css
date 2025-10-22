@@ -1,0 +1,54 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f7f7;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#product-list > div {
+    display: none;
+}
+
+#nav-prev {
+    display: none;
+}
+
+#page-1-radio:checked ~ #product-list .product-page-1 {
+    display: block;
+}
+
+#page-1-radio:checked ~ #pagination-controls #nav-prev {
+    display: none;
+}
+
+#page-1-radio:checked ~ #pagination-controls #nav-next {
+    display: flex; 
+}
+
+#page-1-radio:checked ~ #pagination-controls #page-info::after {
+    content: "Trang 1 / 2";
+}
+
+#page-2-radio:checked ~ #product-list .product-page-2 {
+    display: block; 
+}
+
+#page-2-radio:checked ~ #pagination-controls #nav-prev {
+    display: flex; 
+}
+
+#page-2-radio:checked ~ #pagination-controls #nav-next {
+    display: none; 
+}
+
+#page-2-radio:checked ~ #pagination-controls #page-info::after {
+    content: "Trang 2 / 2";
+}
+
+#page-1-radio:checked ~ #product-list .product-page-1,
+#page-2-radio:checked ~ #product-list .product-page-2 {
+    display: block;
+}
