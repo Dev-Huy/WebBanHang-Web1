@@ -1,0 +1,44 @@
+const input = document.getElementById("search");
+const submitBtnElement = document.getElementById("submit_btn");
+submitBtnElement.addEventListener("click", () => {
+    alert("Đã bấm search!");
+});
+input.addEventListener('keydown', (e) => { //xuly tim kiem
+    if (e.key === "Enter") {
+        e.preventDefault();
+        alert("Đã tìm kiếm!");
+    }
+});
+const menuBtnElement = document.getElementById("menu_btn");
+menuBtnElement.addEventListener("click", () => {
+    document.querySelector("#menu ul").style.display = `block`;
+});
+let product = [];
+// const scrollBtnElement = document.getElementById("scroll_top")
+// scrollBtnElement.addEventListener("click", () => {
+//     window.scrollTo({
+//         top: 0,
+//         behavior: "smooth"
+//     });
+// })
+const shopBtn = document.querySelector("#shop > button"); 
+
+const overlay = document.getElementById("overlayer");
+
+shopBtn.addEventListener("click", () => {
+    overlay.classList.toggle("show");
+    document.body.innerHTML = `<div>
+    </div>`
+});
+
+window.addEventListener("DOMContentLoaded",()=>{
+    const currentUser = localStorage.getItem("currentUser");
+    if (!currentUser) {
+        return;
+    }
+    document.querySelector("#header_nav ul li:first-child").style.display = "none";
+    document.querySelector("#header_nav ul li:last-child").textContent = `${currentUser}`;
+})
+
+
+
