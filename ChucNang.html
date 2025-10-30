@@ -1,186 +1,140 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookStore</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Sách - Giỏ Hàng</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { margin: 0; padding: 0; background: #f9f9f9; }
+    header { background: #2c3e50; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { margin: 0; font-size: 22px; }
+    header button { background: #e67e22; border: none; padding: 8px 15px; border-radius: 6px; color: white; cursor: pointer; font-size: 15px; }
+    header button:hover { background: #d35400; }
+
+    main { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
+    .book { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px; width: 220px; text-align: center; }
+    .book h3 { margin: 10px 0 5px; font-size: 18px; color: #333; }
+    .book p { margin: 5px 0; color: #666; font-size: 14px; }
+    .book button { background: #27ae60; border: none; color: white; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+    .book button:hover { background: #219150; }
+
+    /* Modal Giỏ hàng */
+    .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+    .cart-content { background: white; border-radius: 10px; width: 400px; max-height: 80%; overflow-y: auto; padding: 20px; position: relative; }
+    .cart-content h2 { margin-top: 0; }
+    .cart-content table { width: 100%; border-collapse: collapse; }
+    .cart-content th, .cart-content td { border-bottom: 1px solid #ddd; padding: 8px; text-align: left; font-size: 14px; }
+    .cart-content tfoot td { font-weight: bold; }
+    .cart-content button { margin-top: 10px; background: #2980b9; border: none; color: white; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+    .close-btn { position: absolute; top: 10px; right: 10px; background: #c0392b; border: none; color: white; padding: 4px 8px; border-radius: 5px; cursor: pointer; }
+  </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 bg-dark text-white p-3 min-vh-100">
-                <h5 class="mb-4">BookStore</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="index.html">
-                            <i class="fas fa-tachometer-alt"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="categories.html">
-                            <i class="fas fa-tags"></i> Loại sản phẩm
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white active" href="products.html">
-                            <i class="fas fa-book"></i> Sản phẩm
-                        </a>
-                    </li>
-                </ul>
-            </div>
+  <header>
+    <h1>Shop Sách</h1>
+    <button onclick="toggleCart()">🛒 Giỏ hàng (<span id="cart-count">0</span>)</button>
+  </header>
+  <main id="book-list"></main>
 
-            <!-- Main Content -->
-            <div class="col-md-9 col-lg-10 p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2>Quản lý Sản phẩm</h2>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
-                        <i class="fas fa-plus"></i> Thêm sản phẩm
-                    </button>
-                </div>
-
-                <!-- Product Table -->
-                <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        Danh sách sản phẩm
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Mã</th>
-                                    <th>Tên</th>
-                                    <th>Loại</th>
-                                    <th>Trạng thái</th>
-                                    <th>Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>BK001</td>
-                                    <td>Đắc Nhân Tâm</td>
-                                    <td>Sách kỹ năng</td>
-                                    <td><span class="text-success">Hiển thị</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editProductModal">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-danger">
-                                            <i class="fas fa-eye-slash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>BK002</td>
-                                    <td>Nhà Giả Kim</td>
-                                    <td>Tiểu thuyết</td>
-                                    <td><span class="text-success">Hiển thị</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editProductModal">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-danger">
-                                            <i class="fas fa-eye-slash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Modal Giỏ hàng -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <button class="close-btn" onclick="toggleCart()">X</button>
+      <h2>Giỏ Hàng</h2>
+      <table id="cart-table">
+        <thead>
+          <tr><th>Sách</th><th>SL</th><th>Giá</th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr><td colspan="2">Tổng:</td><td id="cart-total">0₫</td><td></td></tr>
+        </tfoot>
+      </table>
+      <button onclick="checkout()">Thanh toán</button>
+      <button onclick="clearCart()" style="background:#c0392b;margin-left:10px;">Xóa giỏ</button>
     </div>
+  </div>
 
-    <!-- Add Product Modal -->
-    <div class="modal fade" id="addProductModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">Thêm sản phẩm</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Mã sản phẩm</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Tên sản phẩm</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Loại sản phẩm</label>
-                            <select class="form-select" required>
-                                <option value="">Chọn loại</option>
-                                <option value="1">Sách kỹ năng</option>
-                                <option value="2">Tiểu thuyết</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Hình ảnh</label>
-                            <input class="form-control" type="file">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Mô tả</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-primary">Lưu</button>
-                </div>
-            </div>
+  <script>
+    const bookList = document.getElementById('book-list');
+    const cartCount = document.getElementById('cart-count');
+    const cartModal = document.getElementById('cart-modal');
+    const cartTableBody = document.querySelector('#cart-table tbody');
+    const cartTotal = document.getElementById('cart-total');
+
+    const PRODUCTS = [
+      { id: 'b1', name: 'Đắc Nhân Tâm', price: 120000, desc:'Bìa mềm, 288 trang', author:'Dale Carnegie', isbn:'978-604-969' },
+      { id: 'b2', name: 'Tuổi Trẻ Đáng Giá Bao Nhiêu', price: 98000, desc:'Bìa mềm, 200 trang', author:'Rosie Nguyễn', isbn:'978-604-970' },
+      { id: 'b3', name: 'Nhà Giả Kim', price: 90000, desc:'Bìa mềm, 167 trang', author:'Paulo Coelho', isbn:'978-604-971' },
+      { id: 'b4', name: 'Sapiens', price: 150000, desc:'Bìa mềm, 464 trang', author:'Yuval Noah Harari', isbn:'978-604-972' },
+      { id: 'b5', name: 'Bí Quyết Thành Công', price: 85000, desc:'Bìa mềm, 180 trang', author:'Napoleon Hill', isbn:'978-604-973' }
+    ];
+
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    function currency(v){return v.toLocaleString('vi-VN',{style:'currency',currency:'VND'})}
+
+    function saveCart(){ localStorage.setItem('cart', JSON.stringify(cart)); }
+
+    function renderBooks(){
+      bookList.innerHTML = PRODUCTS.map(b=>`
+        <div class='book'>
+          <h3>${b.name}</h3>
+          <p><b>Tác giả:</b> ${b.author}</p>
+          <p>${b.desc}</p>
+          <p><b>Giá:</b> ${currency(b.price)}</p>
+          <button onclick="addToCart('${b.id}')">Thêm vào giỏ</button>
         </div>
-    </div>
+      `).join('');
+    }
 
-    <!-- Edit Product Modal -->
-    <div class="modal fade" id="editProductModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">Sửa sản phẩm</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Mã sản phẩm</label>
-                            <input type="text" class="form-control" value="BK001" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Tên sản phẩm</label>
-                            <input type="text" class="form-control" value="Đắc Nhân Tâm" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Loại sản phẩm</label>
-                            <select class="form-select" required>
-                                <option value="1" selected>Sách kỹ năng</option>
-                                <option value="2">Tiểu thuyết</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Hình ảnh</label>
-                            <input class="form-control" type="file">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Mô tả</label>
-                            <textarea class="form-control" rows="3">Cuốn sách "Đắc Nhân Tâm" của Dale Carnegie là một trong những cuốn sách nổi tiếng nhất mọi thời đại.</textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-primary">Cập nhật</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    function addToCart(id){
+      const item = cart.find(x=>x.id===id);
+      if(item) item.qty++;
+      else cart.push({id, qty:1});
+      saveCart(); updateCartDisplay();
+      alert('Đã thêm sách vào giỏ!');
+    }
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    function removeFromCart(id){
+      cart = cart.filter(x=>x.id!==id);
+      saveCart(); updateCartDisplay();
+    }
+
+    function updateCartDisplay(){
+      cartCount.textContent = cart.reduce((t,x)=>t+x.qty,0);
+      let total = 0;
+      cartTableBody.innerHTML = cart.map(c=>{
+        const b = PRODUCTS.find(p=>p.id===c.id);
+        const subtotal = b.price * c.qty; total += subtotal;
+        return `<tr><td>${b.name}</td><td><input type='number' min='1' value='${c.qty}' onchange='changeQty("${c.id}",this.value)' style='width:50px'></td><td>${currency(subtotal)}</td><td><button onclick='removeFromCart("${c.id}")'>X</button></td></tr>`;
+      }).join('');
+      cartTotal.textContent = currency(total);
+    }
+
+    function changeQty(id, qty){
+      const item = cart.find(x=>x.id===id);
+      if(item){ item.qty = parseInt(qty)||1; }
+      saveCart(); updateCartDisplay();
+    }
+
+    function checkout(){
+      if(cart.length===0){ alert('Giỏ hàng trống!'); return; }
+      alert('Thanh toán thành công! (demo)');
+      clearCart();
+    }
+
+    function clearCart(){ cart=[]; saveCart(); updateCartDisplay(); }
+
+    function toggleCart(){
+      const showing = cartModal.style.display==='flex';
+      cartModal.style.display = showing ? 'none' : 'flex';
+      if(!showing) updateCartDisplay();
+    }
+
+    renderBooks();
+    updateCartDisplay();
+  </script>
 </body>
 </html>
