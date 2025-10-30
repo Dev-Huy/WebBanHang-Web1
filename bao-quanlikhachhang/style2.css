@@ -1,0 +1,25 @@
+
+:root{--bg:#f4f6fb;--card:#fff;--accent:#4f46e5;--muted:#6b7280;--danger:#ef4444;--success:#10b981}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:#111}
+.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.sidebar{background:#111827;color:#fff;padding:20px}
+.sidebar .brand{font-size:18px;font-weight:700;margin-bottom:18px}
+.nav{list-style:none;padding:0}
+.nav a{display:block;color:#cbd5e1;padding:10px;border-radius:8px;text-decoration:none}
+.nav a.active,.nav a:hover{background:rgba(255,255,255,0.1);color:#fff}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px}
+.container{padding:20px}
+.card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.05);margin-bottom:20px}
+.toolbar{display:flex;gap:10px;margin-bottom:10px}
+input,select,button{padding:8px 10px;border:1px solid #ddd;border-radius:6px}
+button{background:var(--accent);color:#fff;border:none;cursor:pointer}
+button.ghost{background:transparent;color:var(--accent);border:1px solid #ccc}
+.error{color:var(--danger);display:none}
+.status{padding:5px 10px;border-radius:12px;font-size:12px}
+.status.active{background:#dcfce7;color:var(--success)}
+.status.locked{background:#fee2e2;color:var(--danger)}
+.login-wrap{display:flex;align-items:center;justify-content:center;height:100vh;background:#eef2ff}
+.login-card{background:#fff;padding:20px;border-radius:12px;width:360px;box-shadow:0 4px 16px rgba(0,0,0,0.1)}
+.modal-backdrop{position:fixed;inset:0;display:none;background:rgba(0,0,0,0.4);align-items:center;justify-content:center}
+.modal{background:#fff;padding:20px;border-radius:10px;width:400px}
+.log #log-list{max-height:150px;overflow:auto;font-size:13px;color:var(--muted)}
