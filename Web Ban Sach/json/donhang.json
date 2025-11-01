@@ -1,0 +1,26 @@
+[
+    { 
+        "id": 1, 
+        "khach": "Nguyễn Văn A", 
+        "ngay": "2025-10-25", 
+        "tong": 189000, 
+        "trangthai": "moi", 
+        "chitiet": "Tâm Lý Học Về Tiền"
+    },
+    { 
+        "id": 2, 
+        "khach": "Trần Thị B", 
+        "ngay": "2025-10-26", 
+        "tong": 108000, 
+        "trangthai": "giaohang", 
+        "chitiet": "Cây Cam Ngọt Của Tôi"
+    },
+    { 
+        "id": 3, 
+        "khach": "Lê Anh C", 
+        "ngay": "2025-10-27", 
+        "tong": 35000, 
+        "trangthai": "huy", 
+        "chitiet": "Vật Lí Lớp 8"
+    }
+]

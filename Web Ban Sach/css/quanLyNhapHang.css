@@ -1,0 +1,510 @@
+#qlNhapSanPham {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#timKiem {
+    flex: 1;
+    /* border-bottom: 1px solid black; */
+    box-shadow: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+
+#input {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#timKiemBangTrangThai {
+    width: fit-content;
+}
+
+#timKiemBangMa,
+#timKiemBangTrangThai {
+    flex: 1;
+    border: 1px solid black;
+    height: fit-content;
+    padding: 10px;
+}
+
+
+#phieuNhap table thead tr col {
+    height: 50px;
+    width: 500px;
+}
+
+#locPhieu,
+#fromDate,
+#toDate {
+    padding: 5px 20px;
+    border: 0;
+    background-color: rgba(31, 180, 234, 0.15);
+    border-radius: 25px;
+}
+
+#locPhieu option {
+    background-color: #ffffff;
+}
+
+#timKiemBangMa,
+#timKiemBangTrangThai {
+    border-radius: 25px;
+}
+
+/* */
+
+
+#phieuNhap {
+    width: 100%;
+    flex: 10;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 200px;
+    display: block;
+    position: relative;
+}
+
+#phieuNhap table {
+    width: 100%;
+    border-spacing: 0 12px;
+    table-layout: fixed;
+}
+
+#phieuNhap thead tr {
+    background-color: #f3b48a;
+    color: #000;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#phieuNhap thead th {
+    padding: 12px 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 25%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#phieuNhap tbody tr {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.25s ease;
+}
+
+#phieuNhap tbody td {
+    text-align: center;
+    padding: 12px 10px;
+    font-size: 15px;
+    color: #000;
+    border: 0;
+    width: 25%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#overlayer {
+    z-index: 1000;
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+}
+
+#overlayer.disable {
+    display: block;
+}
+
+#thongTinPhieu,
+#nhapPhieu {
+    display: none;
+}
+
+#phieuNhap table thead th:first-child {
+    width: 10%;
+}
+
+#phieuNhap table tbody tr td:nth-child(2) button {
+    font-weight: 600;
+}
+
+#phieuNhap {
+    position: relative;
+}
+
+.detailBtn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.detailBtn button {
+    padding: 8px 16px;
+    border: 1px solid #000;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #f3b48a;
+    transition: all 0.2s ease;
+}
+
+#backDetail {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #f3b48a;
+}
+
+#themBtn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 10px 25px;
+    border: 1px solid #000;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #f3b48a;
+    transition: all 0.2s ease;
+}
+
+
+#thongTinPhieuContainer {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+#thongTinPhieuContainer.active {
+    display: flex;
+}
+
+/* 
+#nhapPhieuContainer {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;  
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+} */
+
+#nhapPhieuContainer {
+    display: flex;
+    flex-direction: column;
+    /* stack: nhapSanPham trên nhapPhieu */
+    gap: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+#nhapPhieu {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: flex-start; */
+    /* align-items: flex-start; */
+    width: 100%;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 0;
+}
+
+
+#nhapSanPham {
+    display: flex;
+    flex-wrap: nowrap;
+    /* nằm trên 1 hàng */
+    justify-content: flex-start;
+    /* sát trái, vẫn giãn đều */
+    align-items: flex-start;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow-x: auto;
+    /* nếu quá rộng sẽ cuộn ngang */
+}
+
+#nhapSanPham .form-group {
+    flex: 1 1 20%;
+    /* co dãn vừa đủ */
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    /* khoảng cách giữa các ô */
+    min-width: 150px;
+    /* đảm bảo đủ chỗ nhập text */
+}
+
+#nhapSanPham .form-group input {
+    border: 0.5 solid black;
+}
+
+#nhapSanPham button {
+    flex: 0 0 auto;
+    /* không co dãn */
+    margin-left: 10px;
+}
+
+#nhapPhieu .form-group {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    flex: 1;
+    margin: 0 15px;
+}
+
+#nhapPhieu label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+#nhapPhieu input {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#nhapPhieu button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    border: none;
+    background: #f3b48a;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#totalCost_input {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0;
+    background-color: white;
+}
+
+#nhapSanPham #done_inputBtn {
+    text-wrap: nowrap;
+    padding: 2px 20px;
+    align-self: flex-start;
+    font-weight: 600;
+    width: fit-content;
+}
+
+
+/* ===== BẢNG DANH SÁCH SẢN PHẨM ===== */
+#sanPhamList table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+/* ----- Header ----- */
+#sanPhamList thead tr {
+    background-color: #f3b48a;
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+}
+
+#sanPhamList thead th {
+    padding: 12px 8px;
+    font-size: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #d8905b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ----- Body ----- */
+#sanPhamList tbody tr {
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+#sanPhamList tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* ----- Ô dữ liệu ----- */
+#sanPhamList td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ----- Cột cuối cùng ----- */
+#sanPhamList td:last-child,
+#sanPhamList th:last-child {
+    border-right: none;
+}
+
+/* ----- Góc bo tròn ----- */
+#sanPhamList thead tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+/* ----- Căn chỉnh cột STT và cột cuối cùng ----- */
+#sanPhamList th:first-child,
+#sanPhamList td:first-child {
+    width: 60px;
+    /* hoặc tuỳ bro chỉnh 50–70px cho đẹp */
+    text-align: center;
+}
+
+#sanPhamList th:last-child,
+#sanPhamList td:last-child {
+    width: 60px;
+    /* = width của STT */
+    text-align: center;
+}
+
+/* Đảm bảo nút Xóa luôn nằm gọn trong ô, không bị đẩy ra ngoài khi thêm cột */
+#sanPhamList td:last-child {
+    box-sizing: border-box;
+    padding: 6px 4px;
+    /* nhỏ lại padding để giữ vừa ô */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#sanPhamList td:last-child button {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+#stt {
+    width: fit-content;
+}
+
+#nhapPhieuContainer {
+    position: relative;
+}
+
+#phieuNhapDetail {
+    display: none;
+}
+
+#phieuNhapDetail.active {
+    display: block;
+}
+
+#phieuNhapTable {
+    display: none;
+}
+
+#phieuNhapTable.active {
+    display: block;
+}
+
+#nhapPhieuContainer {
+    display: none;
+}
+
+#nhapPhieuContainer.active {
+    display: flex;
+}
+
+#overlayPhieuNhap {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: calc(100% - 700px);
+}
+
+#overlayPhieuNhap.active {
+    display: block;
+}
+
+#sanPhamList table img {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    transition: transform 0.2s ease;
+}
+
+#imageModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding: 20px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+#imageModal .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+#imageModal .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#imageModal .close:hover,
+#imageModal .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
