@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Web Ban Sach</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/phan2.css" />
+    <link rel="stylesheet" href="./css/style2.css" />
+    <script src="./js/script.js" defer></script>
+    <script src="https://kit.fontawesome.com/078463c473.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/giohang.css">
+    <script src="./js/giohang.js" defer></script>
+    <script type="module" src="./js/timkiem.js" defer></script>
+</head>
+
+<body>
+    <!-- <button id="scroll_top">Lên trên</button> -->
+
+    <div id="header_subnav">
+        <div id="logo">
+            <i class="fa-solid fa-book"></i>
+        </div>
+        <div id="menu">
+            <button id="menu_btn"><i class="fa-solid fa-bars"></i></button>
+            <ul>
+                <li id="sach_truyen">
+                    <a href="#" id="sach_truyen_btn">Sách - Truyện</a>
+                    <ul id="sach_truyen_list">
+                        <li><a href="#" id="kinhdi">Kinh Dị</a></li>
+                        <li><a href="#" id="haikich">Hài Kịch</a></li>
+                        <li><a href="#" id="trinhtham">Trinh Thám</a></li>
+                    </ul>
+                </li>
+                <li id="dungcuve">
+                    <a href="#" id="dungcuve_btn">Dụng cụ vẽ</a>
+                    <ul id="dungcuve_list">
+                        <li><a href="" id="">Dụng cụ học tập</a></li>
+                        <li><a href="">Họa cụ</a></li>
+                    </ul>
+                </li>
+                <li id="dochoi">
+                    <a href="#" id="dochoi_btn">Đồ Chơi</a>
+                </li>
+            </ul>
+        </div>
+        <div id="search_form">
+            <input type="search" id="search" placeholder="Tìm kiếm..." />
+            <button id="filter-btn"><i class="fa-solid fa-filter"></i></button>
+            <button id="submit_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div id="filter-form">
+            <div>
+                <label>Giá sản phẩm</label>
+                <select title="Lọc giá sản phẩm">
+                    <option value="Chọn" selected> Chọn </option>
+                    <option value="Thấp đến cao">Thấp đến cao</option>
+                    <option value="Cao đến thấp">Cao đến thấp</option>
+                </select>
+            </div>
+            <div>
+                <label>Khoảng giá:</label><br>
+                <label>Từ: </label>
+                <input type="number" id="minRange" min="0" max="1000000" step="50000">
+                <lable>đến: </lable>
+                <input type="number" id="maxRange" min="0" max="1000000" step="50000">
+            </div>
+        </div>
+        <div id="shop">
+            <button onclick="toggleCart()"><i class="fa-solid fa-cart-shopping"></i></button>
+            <div id="shop_form">
+                <div class="cart-modal" id="cart-modal">
+                    <div class="cart-content">
+                        <button class="close-btn" onclick="toggleCart()">X</button>
+                        <h2>Giỏ Hàng</h2>
+                        <table id="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Sách</th>
+                                    <th>SL</th>
+                                    <th>Giá</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">Tổng:</td>
+                                    <td id="cart-total">₫</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <button onclick="checkout()">Thanh toán</button>
+                        <button onclick="clearCart()" style="background:#c0392b;margin-left:10px;">Xóa giỏ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header_nav">
+            <ul>
+                <li><a role="button" href="dangnhap.html?action=signup">Đăng ký</a></li>
+                <li><a role="button" href="dangnhap.html?action=signin">Đăng nhập</a></li>
+            </ul>
+            <div id="user-info">
+                <table>
+                    <tr>
+                        <th>Họ tên: </th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Email: </th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Số điện thoại: </th>
+                        <td></td>
+                    </tr>
+                </table>
+                <button id="logout-btn">Đăng xuất</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="slidecontainer">
+            <div class="slides">
+                <img src="img/slider1.jpg" class="active">
+                <img src="img/slider2.jpg">
+                <img src="img/slider3.jpg">
+            </div>
+            <div class="buttons">
+                <span class="next">&#10095;</span>
+                <span class="prev">&#10094;</span>
+            </div>
+            <div class="dotsContainer">
+                <div class="dot active" attr='0' onclick="switchImage(this)"></div>
+                <div class="dot" attr='1' onclick="switchImage(this)"></div>
+                <div class="dot" attr='2' onclick="switchImage(this)"></div>
+            </div>
+        </div>
+    </div>
+    <div id="main-content">
+        <div class="section-box">
+            <div class="header-box">
+                <h1>SÁCH - TÂM LÝ HỌC</h1>
+            </div>
+
+            <div class="content-box">
+                <input type="radio" id="page-1-tlh" name="page-tlh" checked>
+                <input type="radio" id="page-2-tlh" name="page-tlh">
+
+                <div id="product-list-tlh">
+                    <div class="product-card product-page-1-tlh">
+                        <img src="" alt="Tâm Lý Học Về Tiền" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Tâm Lý Học Về Tiền</p>
+                        <p class="price">189.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-1-tlh">
+                        <img src="" alt="Phi Lý Trí" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Phi Lý Trí</p>
+                        <p class="price">169.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-1-tlh">
+                        <img src="" alt="Sức Mạnh Của Hiện Tại" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Sức Mạnh Của Hiện Tại</p>
+                        <p class="price">168.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-1-tlh">
+                        <img src="" alt="Tâm Lý Học Đám Đông" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Tâm Lý Học Đám Đông</p>
+                        <p class="price">149.000 VNĐ</p>
+                    </div>
+
+                    <div class="product-card product-page-2-tlh">
+                        <img src="" alt="Thói Quen Nguyên Tử" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Thói Quen Nguyên Tử</p>
+                        <p class="price">189.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-2-tlh">
+                        <img src="" alt="Trí Tuệ Xúc Cảm" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Trí Tuệ Xúc Cảm</p>
+                        <p class="price">199.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-2-tlh">
+                        <img src="" alt="Đọc Vị Bất Kỳ Ai" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Đọc Vị Bất Kỳ Ai</p>
+                        <p class="price">89.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-2-tlh">
+                        <img src="" alt="Đi Tìm Lẽ Sống" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Đi Tìm Lẽ Sống</p>
+                        <p class="price">88.000 VNĐ</p>
+                    </div>
+                </div>
+
+                <div id="pagination-controls-tlh">
+                    <label for="page-1-tlh" id="nav-prev-tlh" class="nav-btn gray">&#8592;</label>
+                    <span id="page-info-tlh"></span>
+                    <label for="page-2-tlh" id="nav-next-tlh" class="nav-btn red">&#8594;</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="header-box">
+                <h1>SÁCH - VĂN HỌC</h1>
+            </div>
+
+            <div class="content-box">
+                <input type="radio" id="page-3-vh" name="page-vh" checked>
+                <input type="radio" id="page-4-vh" name="page-vh">
+
+                <div id="product-list-vh">
+                    <div class="product-card product-page-3-vh">
+                        <img src="" alt="Cây Cam Ngọt Của Tôi" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Cây Cam Ngọt Của Tôi</p>
+                        <p class="price">108.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-3-vh">
+                        <img src="" alt="Thiên Tài Bên Trái Kẻ Điên Bên Phải"
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Thiên Tài Bên Trái Kẻ Điên Bên Phải</p>
+                        <p class="price">145.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-3-vh">
+                        <img src="" alt="Thuyền" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Thuyền</p>
+                        <p class="price">128.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-3-vh">
+                        <img src="" alt="Nhà Giả Kim" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Nhà Giả Kim</p>
+                        <p class="price">79.000 VNĐ</p>
+                    </div>
+
+                    <div class="product-card product-page-4-vh">
+                        <img src="" alt="Ông Già Và Biển Cả" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Ông Già Và Biển Cả</p>
+                        <p class="price">45.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-4-vh">
+                        <img src="" alt="Tắt Đèn" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Tắt Đèn</p>
+                        <p class="price">45.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-4-vh">
+                        <img src="" alt="Hai Số Phận" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Hai Số Phận</p>
+                        <p class="price">195.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-4-vh">
+                        <img src="" alt="Cặp Song Sinh Kỳ Ảo" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Cặp Song Sinh Kỳ Ảo</p>
+                        <p class="price">390.000 VNĐ</p>
+                    </div>
+                </div>
+
+                <div id="pagination-controls-vh">
+                    <label for="page-3-vh" id="nav-prev-vh" class="nav-btn gray">&#8592;</label>
+                    <span id="page-info-vh"></span>
+                    <label for="page-4-vh" id="nav-next-vh" class="nav-btn red">&#8594;</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="header-box">
+                <h1>SÁCH - SÁCH GIÁO KHOA</h1>
+            </div>
+
+            <div class="content-box">
+                <input type="radio" id="page-5-sgk" name="page-sgk" checked>
+                <input type="radio" id="page-6-sgk" name="page-sgk">
+
+                <div id="product-list-sgk">
+                    <div class="product-card product-page-5-sgk">
+                        <img src="" alt="Toán Lớp 7" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Toán Lớp 7</p>
+                        <p class="price">12.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-5-sgk">
+                        <img src="" alt="Ngữ Văn Lớp 11" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Ngữ Văn Lớp 11</p>
+                        <p class="price">25.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-5-sgk">
+                        <img src="" alt="Tiếng Anh Lớp 12" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Tiếng Anh Lớp 12</p>
+                        <p class="price">15.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-5-sgk">
+                        <img src="" alt="Vật Lí Lớp 8" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Vật Lí Lớp 8</p>
+                        <p class="price">13.000 VNĐ</p>
+                    </div>
+
+                    <div class="product-card product-page-6-sgk">
+                        <img src="" alt="Hóa Học Lớp 10" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Hóa Học Lớp 10</p>
+                        <p class="price">27.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-6-sgk">
+                        <img src="" alt="Sinh Học Lớp 9" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Sinh Học Lớp 9</p>
+                        <p class="price">21.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-6-sgk">
+                        <img src="" alt="Lịch Sử Lớp 6" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Lịch Sử Lớp 6</p>
+                        <p class="price">17.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-6-sgk">
+                        <img src="" alt="Địa Lí Lớp 7" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Địa Lí Lớp 7</p>
+                        <p class="price">13.000 VNĐ</p>
+                    </div>
+                </div>
+
+                <div id="pagination-controls-sgk">
+                    <label for="page-5-sgk" id="nav-prev-sgk" class="nav-btn gray">&#8592;</label>
+                    <span id="page-info-sgk"></span>
+                    <label for="page-6-sgk" id="nav-next-sgk" class="nav-btn red">&#8594;</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="header-box">
+                <h1>SÁCH - KHOA HỌC CÔNG NGHỆ</h1>
+            </div>
+
+            <div class="content-box">
+                <input type="radio" id="page-7-khcn" name="page-khcn" checked>
+                <input type="radio" id="page-8-khcn" name="page-khcn">
+
+                <div id="product-list-khcn">
+                    <div class="product-card product-page-7-khcn">
+                        <img src="" alt="Khoa Học Dữ Liệu, Trí Tuệ Nhân Tạo Và Học Máy Trong Phát Triển Thuốc"
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Khoa Học Dữ Liệu, Trí Tuệ Nhân Tạo Và Học Máy Trong Phát Triển Thuốc</p>
+                        <p class="price">399.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-7-khcn">
+                        <img src="" alt="Điểm Kỳ Dị Đã Cận Kề" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Điểm Kỳ Dị Đã Cận Kề</p>
+                        <p class="price">245.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-7-khcn">
+                        <img src="" alt="Công nghệ bán dẫn tiên tiến"
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Công nghệ bán dẫn tiên tiến</p>
+                        <p class="price">155.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-7-khcn">
+                        <img src="" alt="AI Agent - Thiết Kế, Thực Hành Và Kiến Tạo Tác Nhân Thông Minh "
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">AI Agent - Thiết Kế, Thực Hành Và Kiến Tạo Tác Nhân Thông Minh </p>
+                        <p class="price">269.000 VNĐ</p>
+                    </div>
+
+                    <div class="product-card product-page-8-khcn">
+                        <img src="" alt="Giải Thích Các Thứ - Nói Đơn Giản Về Những Thứ Phức Tạp"
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Giải Thích Các Thứ - Nói Đơn Giản Về Những Thứ Phức Tạp</p>
+                        <p class="price">170.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-8-khcn">
+                        <img src=""
+                            alt="Công Nghệ Blockchain Và Cách Trung Quốc Xây Dựng Chuỗi Cung Ứng Kỹ Thuật Số Trong Một Thế Giới Zero Trust"
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Công Nghệ Blockchain Và Cách Trung Quốc Xây Dựng Chuỗi Cung Ứng Kỹ Thuật Số
+                            Trong Một Thế Giới Zero Trust</p>
+                        <p class="price">220.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-8-khcn">
+                        <img src="" alt="Bản Đồ Ai - Quyền Lực, Chính Trị, Và Sự Tiêu Tốn Tài Nguyên Của Hành Tinh"
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Bản Đồ Ai - Quyền Lực, Chính Trị, Và Sự Tiêu Tốn Tài Nguyên Của Hành Tinh</p>
+                        <p class="price">139.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-8-khcn">
+                        <img src="" alt="IS - BOK 2.0 - Bộ kiến thức cốt lõi về an toàn thông tin"
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">IS - BOK 2.0 - Bộ kiến thức cốt lõi về an toàn thông tin</p>
+                        <p class="price">490.000 VNĐ</p>
+                    </div>
+                </div>
+
+                <div id="pagination-controls-khcn">
+                    <label for="page-7-khcn" id="nav-prev-khcn" class="nav-btn gray">&#8592;</label>
+                    <span id="page-info-khcn"></span>
+                    <label for="page-8-khcn" id="nav-next-khcn" class="nav-btn red">&#8594;</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="header-box">
+                <h1>SÁCH - KINH TẾ</h1>
+            </div>
+
+            <div class="content-box">
+                <input type="radio" id="page-9-kt" name="page-kt" checked>
+                <input type="radio" id="page-10-kt" name="page-kt">
+
+                <div id="product-list-kt">
+                    <div class="product-card product-page-9-kt">
+                        <img src="" alt="Kinh Tế Học Hài Hước" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Kinh Tế Học Hài Hước</p>
+                        <p class="price">169.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-9-kt">
+                        <img src="" alt="Thế Giới Phẳng" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Thế Giới Phẳng</p>
+                        <p class="price">272.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-9-kt">
+                        <img src="" alt="Lược Sử Kinh Tế Học" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Lược Sử Kinh Tế Học</p>
+                        <p class="price">135.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-9-kt">
+                        <img src="" alt="Những Cuộc Phiêu Lưu Trong Kinh Doanh"
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Những Cuộc Phiêu Lưu Trong Kinh Doanh</p>
+                        <p class="price">110.000 VNĐ</p>
+                    </div>
+
+                    <div class="product-card product-page-10-kt">
+                        <img src="" alt="Đại Địa Chấn Kinh Tế" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Đại Địa Chấn Kinh Tế</p>
+                        <p class="price">188.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-10-kt">
+                        <img src="" alt="Cú Hích" onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Cú Hích</p>
+                        <p class="price">108.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-10-kt">
+                        <img src="Kinh Điển Về Khởi Nghiệp" alt=""
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Kinh Điển Về Khởi Nghiệp</p>
+                        <p class="price">375.000 VNĐ</p>
+                    </div>
+                    <div class="product-card product-page-10-kt">
+                        <img src="" alt="Chiến Lược Đại Dương Xanh"
+                            onerror="this.onerror=null;this.src='./img/Error.png';">
+                        <p class="title">Chiến Lược Đại Dương Xanh</p>
+                        <p class="price">239.000 VNĐ</p>
+                    </div>
+                </div>
+
+                <div id="pagination-controls-kt">
+                    <label for="page-9-kt" id="nav-prev-kt" class="nav-btn gray">&#8592;</label>
+                    <span id="page-info-kt"></span>
+                    <label for="page-10-kt" id="nav-next-kt" class="nav-btn red">&#8594;</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="copyright">
+        &copy; 2025 We-BookStore. Tất cả các quyền được bảo lưu.
+    </div>
+    <div id="overlayer"></div>
+    <script src="js/loadData.js"></script>
+</body>
+
+</html>

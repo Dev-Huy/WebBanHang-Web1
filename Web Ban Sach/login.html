@@ -1,0 +1,93 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Quản lý người dùng</title>
+  <link rel="stylesheet" href="css/style3.css" />
+</head>
+<body>
+  <div id="app-root">
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="login-wrap">
+      <div class="login-card card">
+        <h2>Admin Login</h2>
+        <p class="muted">Trang đăng nhập dành riêng cho quản trị viên.</p>
+        <div class="form-row"><input id="admin-email" type="email" placeholder="Email"></div>
+        <div class="form-row"><input id="admin-password" type="password" placeholder="Mật khẩu"></div>
+        <div class="form-actions">
+          <label><input id="remember" type="checkbox"> Ghi nhớ</label>
+          <button id="login-btn">Đăng nhập</button>
+        </div>
+        <p id="login-error" class="error">Thông tin đăng nhập không đúng.</p>
+        <hr>
+        <small class="muted">Tài khoản mẫu: <strong>bao123</strong> / <strong>bao456</strong></small>
+      </div>
+    </div>
+
+    <!-- APP -->
+    <div id="admin-app" class="app">
+      <aside class="sidebar">
+        <div class="brand">Shop Admin</div>
+        <ul class="nav">
+          <li><a href="#" class="active">Quản lý người dùng</a></li>
+          <li><a href="#">Quản lý sản phẩm</a></li>
+          <li><a href="#">Quản lý đơn hàng</a></li>
+          <li><a href="#">Báo cáo</a></li>
+        </ul>
+        <div class="admin-info">Đã đăng nhập với <strong id="admin-email-display">admin@shop.test</strong></div>
+      </aside>
+
+      <main>
+        <header>
+          <h1>Quản lý người dùng</h1>
+          <button id="logout" class="ghost">Đăng xuất</button>
+        </header>
+
+        <div class="container">
+          <div class="card">
+            <div class="toolbar">
+              <input id="search" type="search" placeholder="Tìm theo tên, email...">
+              <select id="filter-status">
+                <option value="all">Tất cả trạng thái</option>
+                <option value="active">Active</option>
+                <option value="locked">Locked</option>
+              </select>
+              <button id="add-sample">Thêm mẫu</button>
+            </div>
+
+            <table id="users-table">
+              <thead>
+                <tr><th>ID</th><th>Người dùng</th><th>Liên hệ</th><th>Ngày tạo</th><th>Trạng thái</th><th>Hành động</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="card log">
+            <h4>Nhật ký hành động</h4>
+            <div id="log-list"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- MODAL -->
+    <div id="modal-root" class="modal-backdrop">
+      <div class="modal">
+        <h3 id="modal-title">Tiêu đề</h3>
+        <div id="modal-body"></div>
+        <div class="modal-actions">
+          <button id="modal-cancel" class="ghost">Hủy</button>
+          <button id="modal-ok">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script2.js"></script>
+</body>
+</html>
+
+

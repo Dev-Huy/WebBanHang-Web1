@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "username": "anguyen",
+        "ngay": "2025-10-25",
+        "tong": 609000,
+        "trangthai": "moi",
+        "chitiet": [
+            {
+                "id": "SP001",
+                "soluong": 1
+            },
+            {
+                "id": "SP002",
+                "soluong": 2
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "username": "btranthi",
+        "ngay": "2025-10-26",
+        "tong": 108000,
+        "trangthai": "giaohang",
+        "chitiet": [
+            {
+                "id": "SP002",
+                "soluong": 1
+            }
+        ]
+    }
+]
