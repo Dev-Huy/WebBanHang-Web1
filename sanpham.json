@@ -1,19 +1,19 @@
-
 [
   {
-    "id": "SP001",
+    "id": "1",
     "name": "Tâm Lý Học Về Tiền",
     "img": "img/sp001.png",
     "author": "Hoàng Thị Minh Phúc",
     "category": "Tâm lý học",
-    "price": 151.000,
+    "price": 151000,
     "publicYear": 2023,
     "publisher": "Alpha Books",
     "amount": 0,
-    "description": "Học Python từ cơ bản đến nâng cao với ví dụ thực tế."
+    "description": "Học Python từ cơ bản đến nâng cao với ví dụ thực tế.",
+    "status": "active"
   },
   {
-    "id": "SP002",
+    "id": "2",
     "name": "Phi Lý Trí",
     "img": "img/sp002.png",
     "author": "Hồng Lê",
@@ -22,21 +22,24 @@
     "publicYear": 2021,
     "publisher": "NXB Trẻ",
     "amount": 0,
-    "description": "Khám phá cách bộ não ra quyết định hàng ngày."
+    "description": "Khám phá cách bộ não ra quyết định hàng ngày.",
+    "status": "active"
   },
   {
-    "id": "SP003",
+    "id": "3",
     "name": "Kalila và Dimma - Ngụ Ngôn Kể Lại (Di cảo)",
     "img": "img/sp003.png",
     "author": "Cao Huy Thuần",
     "category": "Tâm lý học",
+    "price": 162000,
     "publicYear": 2021,
     "publisher": "NXB Tổng hợp",
     "amount": 0,
-    "description": "Cẩm nang giao tiếp kinh điển mọi thời đại."
+    "description": "Cẩm nang giao tiếp kinh điển mọi thời đại.",
+    "status": "active"
   },
   {
-    "id": "SP004",
+    "id": "4",
     "name": "Đò Dọc",
     "img": "img/sp004.png",
     "author": "J.K. Rowling",
@@ -45,10 +48,11 @@
     "publicYear": 2020,
     "publisher": "NXB Kim Đồng",
     "amount": 0,
-    "description": "Hành trình đầu tiên của cậu bé phù thủy."
+    "description": "Hành trình đầu tiên của cậu bé phù thủy.",
+    "status": "active"
   },
   {
-    "id": "SP005",
+    "id": "5",
     "name": "Sức Mạnh Của Hiện Tại",
     "img": "img/sp005.png",
     "author": "Ekhac Tolle",
@@ -61,7 +65,7 @@
     "status": "active"
   },
   {
-    "id": "SP006",
+    "id": "6",
     "name": "Tâm lý học đám đông",
     "img": "img/sp006.png",
     "author": "Paulo Coelho",
@@ -74,8 +78,9 @@
     "status": "active"
   },
   {
-    "id": "SP007",
+    "id": "7",
     "name": "JavaScript Hiện Đại",
+    "img": "img/sp007.png",
     "author": "Phạm Quốc Anh",
     "category": "Lập trình",
     "price": 199000,
@@ -86,8 +91,9 @@
     "status": "active"
   },
   {
-    "id": "SP008",
+    "id": "8",
     "name": "Toán Học Vui",
+    "img": "img/photo-1635070041078-e363dbe005cb.jpg",
     "author": "Nguyễn Tiến Đạt",
     "category": "Toán học",
     "price": 75000,
@@ -98,8 +104,9 @@
     "status": "active"
   },
   {
-    "id": "SP009",
+    "id": "9",
     "name": "Marketing 4.0",
+    "img": "img//photo-1460925895917-afdab827c52f.jpg",
     "author": "Philip Kotler",
     "category": "Kinh doanh",
     "price": 165000,
@@ -110,8 +117,9 @@
     "status": "active"
   },
   {
-    "id": "SP010",
+    "id": "10",
     "name": "Truyện Ngắn Nam Cao",
+    "img": "img/photo-1544716278-ca5e3f4abd8c.jpg",
     "author": "Nam Cao",
     "category": "Văn học Việt Nam",
     "price": 68000,
@@ -122,113 +130,133 @@
     "status": "active"
   },
   {
-    "id": "SP011",
+    "id": "11",
     "name": "ReactJS Từ A-Z",
+    "img": "img/photo-1627398242454-45a1465c2479.jpg",
     "author": "Vũ Minh Quân",
     "category": "Lập trình",
     "price": 219000,
     "publicYear": 2025,
     "publisher": "TechPress",
     "amount": 0,
-    "description": "Xây dựng web động với React và Hooks."
+    "description": "Xây dựng web động với React và Hooks.",
+    "status": "active"
   },
   {
-    "id": "SP012",
+    "id": "12",
     "name": "Con Mèo Dạy Hải Âu Bay",
+    "img": "img/photo-1514888286974-6c03e2ca1dba.jpg",
     "author": "Luis Sepúlveda",
     "category": "Văn học thiếu nhi",
     "price": 82000,
     "publicYear": 2021,
     "publisher": "NXB Kim Đồng",
     "amount": 0,
-    "description": "Câu chuyện cảm động về tình bạn khác loài."
+    "description": "Câu chuyện cảm động về tình bạn khác loài.",
+    "status": "active"
   },
   {
-    "id": "SP013",
+    "id": "13",
     "name": "Kinh Doanh Online 2025",
+    "img": "img/photo-1512820790803-83ca734da794.jpg",
     "author": "Trương Thị Mai",
     "category": "Kinh doanh",
     "price": 139000,
     "publicYear": 2025,
     "publisher": "Alpha Books",
     "amount": 0,
-    "description": "Chiến lược bán hàng online hiệu quả."
+    "description": "Chiến lược bán hàng online hiệu quả.",
+    "status": "active"
   },
   {
-    "id": "SP014",
+    "id": "14",
     "name": "Data Science Với Python",
+    "img": "img/photo-1559757148-5c350d0d3c56.jpg",
     "author": "Đỗ Văn Hùng",
     "category": "Khoa học dữ liệu",
     "price": 249000,
     "publicYear": 2024,
     "publisher": "NXB Công Thương",
     "amount": 0,
-    "description": "Từ dữ liệu thô đến mô hình AI."
+    "description": "Từ dữ liệu thô đến mô hình AI.",
+    "status": "active"
   },
   {
-    "id": "SP015",
+    "id": "15",
     "name": "Đời Ngắn Đừng Ngủ Dài",
+    "img": "img/sp013.png",
     "author": "Robin Sharma",
     "category": "Phát triển bản thân",
     "price": 108000,
     "publicYear": 2020,
     "publisher": "NXB Tổng hợp",
     "amount": 0,
-    "description": "Thức dậy và sống trọn từng khoảnh khắc."
+    "description": "Thức dậy và sống trọn từng khoảnh khắc.",
+    "status": "active"
   },
   {
-    "id": "SP016",
+    "id": "16",
     "name": "Node.js Xây Dựng API",
+    "img": "img/sp032.png",
     "author": "Hoàng Văn Tuấn",
     "category": "Lập trình",
     "price": 189000,
     "publicYear": 2025,
     "publisher": "CodeMaster",
     "amount": 0,
-    "description": "Backend mạnh mẽ với Node.js và Express."
+    "description": "Backend mạnh mẽ với Node.js và Express.",
+    "status": "active"
   },
   {
-    "id": "SP017",
+    "id": "17",
     "name": "Lịch Sử Việt Nam Qua Tranh",
+    "img": "img/sp016.png",
     "author": "Trần Quốc Vượng",
     "category": "Lịch sử",
     "price": 129000,
     "publicYear": 2022,
     "publisher": "NXB Giáo Dục",
     "amount": 0,
-    "description": "Hiểu lịch sử qua hình ảnh sinh động."
+    "description": "Hiểu lịch sử qua hình ảnh sinh động.",
+    "status": "active"
   },
   {
-    "id": "SP018",
+    "id": "18",
     "name": "Trí Tuệ Xúc Cảm",
+    "img": "img/photo-1629992101753-56d196c8aabb.jpg",
     "author": "Daniel Goleman",
     "category": "Tâm lý học",
     "price": 142000,
     "publicYear": 2021,
     "publisher": "NXB Trẻ",
     "amount": 0,
-    "description": "Chìa khóa thành công không nằm ở IQ."
+    "description": "Chìa khóa thành công không nằm ở IQ.",
+    "status": "active"
   },
   {
-    "id": "SP019",
+    "id": "19",
     "name": "Flutter Mobile App",
+    "img": "img/sp034.png",
     "author": "Phạm Thị Ngọc",
     "category": "Lập trình di động",
     "price": 229000,
     "publicYear": 2025,
     "publisher": "TechPress",
     "amount": 0,
-    "description": "Xây app iOS & Android bằng 1 codebase."
+    "description": "Xây app iOS & Android bằng 1 codebase.",
+    "status": "active"
   },
   {
-    "id": "SP020",
+    "id": "20",
     "name": "Sách Thiếu Nhi Song Ngữ",
+    "img": "img/sp011.png",
     "author": "Anna Lickley",
     "category": "Sách thiếu nhi",
     "price": 59000,
     "publicYear": 2024,
     "publisher": "NXB Kim Đồng",
     "amount": 0,
-    "description": "Học tiếng Anh qua truyện tranh dễ thương."
+    "description": "Học tiếng Anh qua truyện tranh dễ thương.",
+    "status": "active"
   }
 ]
