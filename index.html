@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Web Bán Sách</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="main-content"></div>
+<div id="overlay" class="hidden"></div>
+
+<div id="popup" class="hidden">
+  <span id="close-btn" class="close-btn" aria-label="Đóng">&times;</span>
+  <div class="popup-content">
+    <div class="popup-left">
+      <img id="popup-img" src="" alt="">
+    </div>
+    <div class="popup-right">
+      <h2 id="popup-title"></h2>
+      <p id="popup-price"></p>
+      <p id="popup-desc"></p>
+      <div class="popup-buttons">
+        <button id="add-cart">Thêm vào giỏ</button>
+        <button id="buy-now">Mua ngay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type="module" src="render.js"></script>
+</body>
+</html>
