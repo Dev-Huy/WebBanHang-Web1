@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="./css/dangnhap-dangky.css">
+    <script type="module" src="./js/dangnhap.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Tài khoản</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Về trang chủ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container" id="signin">
+            <h2>Đăng nhập</h2>
+            <form id="signinForm">
+                <div class="form-group">
+                    <label for="username">Tên tài khoản:</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn" id="signin-btn">Đăng nhập</button>
+            </form>
+        </div>
+        <div class="form-container" id="signup">
+            <h2>Đăng ký</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="name">Họ tên:</label>
+                    <input type="text" id="name" name="name" required autocomplete="">
+                </div>
+                <div class="form-group">
+                    <label for="username-signup">Tên tài khoản: </label>
+                    <input type="text" id="username-signup" name="username-signup" required autocomplete="">
+                </div>
+                <div class="form-group">
+                    <label for="email-signup">Email: </label>
+                    <input type="text" id="email-signup" name="email-signup" required autocomplete="">
+                </div>
+                <div class="form-group">
+                    <label for="phone-signup">Số điện thoại: </label>
+                    <input type="phone" id="phone-signup" name="phone-signup" required autocomplete="">
+                </div>
+                <div class="form-group">
+                    <label for="address-signup">Địa chỉ: </label>
+                    <input type="text" id="address-signup" name="address-signup" required autocomplete="">
+                </div>
+                <div class="form-group">
+                    <label for="password-signup">Mật khẩu:</label>
+                    <input type="password" id="password-signup" name="password-signup" required autocomplete="">
+                </div>
+                <div class="form-group">
+                    <label for="passwordAgain-signup">Nhập lại mật khẩu:</label>
+                    <input type="password" id="passwordAgain-signup" name="passwordAgain-signup" required
+                        autocomplete="">
+                </div>
+                <button type="submit-signup" class="btn" id="signup-btn">Đăng ký</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
