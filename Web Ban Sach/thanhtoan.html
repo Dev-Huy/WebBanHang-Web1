@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - BookBuy</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">BookBuy</div>
+                <div class="header-support">Hỗ trợ: 1900 123 456</div>
+            </div>
+            <div class="header-nav">
+                <a href="#">Trang chủ</a>
+                <a href="#">Sách</a>
+                <a href="#">Giỏ hàng</a>
+                <a href="#">Tài khoản</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Checkout Process -->
+    <div class="container">
+        <div class="checkout-process">
+            <div class="process-step completed">
+                <div class="step-number">✓</div>
+                <div class="step-text">Giỏ hàng</div>
+            </div>
+            <div class="process-step completed">
+                <div class="step-number">✓</div>
+                <div class="step-text">Thông tin giao hàng</div>
+            </div>
+            <div class="process-step active">
+                <div class="step-number">3</div>
+                <div class="step-text">Thanh toán</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-text">Hoàn tất</div>
+            </div>
+        </div>
+
+        <h1 style="text-align: center; margin-bottom: 20px;">Thanh Toán</h1>
+
+        <div class="checkout-content">
+            <!-- Left Column -->
+            <div class="checkout-left">
+                <!-- Delivery Information -->
+                <div class="checkout-box">
+                    <div class="box-title">Thông tin giao hàng</div>
+                    <div class="form-group">
+                        <label class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" value="Nguyễn Văn A" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" value="0901 234 567" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" value="123 Đường Lê Lợi, Quận 1, TP.HCM" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Ghi chú</label>
+                        <textarea class="form-control" rows="2" placeholder="Ghi chú cho đơn hàng (nếu có)"></textarea>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="checkout-box">
+                    <div class="box-title">Phương thức thanh toán</div>
+                    <div class="payment-methods">
+                        <div class="payment-method selected">
+                            <input type="radio" name="payment" checked>
+                            <div class="payment-icon">💵</div>
+                            <div class="payment-info">
+                                <div class="payment-name">Thanh toán khi nhận hàng (COD)</div>
+                                <div class="payment-desc">Thanh toán bằng tiền mặt khi nhận hàng</div>
+                            </div>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" name="payment">
+                            <div class="payment-icon">🏦</div>
+                            <div class="payment-info">
+                                <div class="payment-name">Chuyển khoản ngân hàng</div>
+                                <div class="payment-desc">Chuyển khoản qua Internet Banking</div>
+                            </div>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" name="payment">
+                            <div class="payment-icon">📱</div>
+                            <div class="payment-info">
+                                <div class="payment-name">Ví điện tử MoMo</div>
+                                <div class="payment-desc">Thanh toán qua ứng dụng MoMo</div>
+                            </div>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" name="payment">
+                            <div class="payment-icon">💳</div>
+                            <div class="payment-info">
+                                <div class="payment-name">Thẻ tín dụng/ghi nợ</div>
+                                <div class="payment-desc">Visa, Mastercard, JCB</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="checkout-right">
+                <!-- Order Summary -->
+                <div class="checkout-box">
+                    <div class="box-title">Đơn hàng của bạn</div>
+                    
+                    <div class="order-item">
+                        <div class="item-image">Hình</div>
+                        <div class="item-details">
+                            <div class="item-name">Nhà Giả Kim (Tái Bản 2020)</div>
+                            <div class="item-price">75.000 ₫</div>
+                            <div class="item-quantity">Số lượng: 1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-item">
+                        <div class="item-image">Hình</div>
+                        <div class="item-details">
+                            <div class="item-name">Đắc Nhân Tâm (Khổ Lớn)</div>
+                            <div class="item-price">89.000 ₫</div>
+                            <div class="item-quantity">Số lượng: 1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-item">
+                        <div class="item-image">Hình</div>
+                        <div class="item-details">
+                            <div class="item-name">Tư Duy Phản Biện</div>
+                            <div class="item-price">120.000 ₫</div>
+                            <div class="item-quantity">Số lượng: 1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Tạm tính:</span>
+                        <span>284.000 ₫</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Phí vận chuyển:</span>
+                        <span>15.000 ₫</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Giảm giá:</span>
+                        <span style="color: #28a745;">-20.000 ₫</span>
+                    </div>
+                    
+                    <div class="summary-row summary-total">
+                        <span>Tổng cộng:</span>
+                        <span>279.000 ₫</span>
+                    </div>
+                    
+                    <div class="promo-code">
+                        <input type="text" class="promo-input" placeholder="Mã giảm giá">
+                        <button class="promo-btn">Áp dụng</button>
+                    </div>
+                    
+                    <button class="checkout-btn">HOÀN TẤT ĐƠN HÀNG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-title">VỀ BOOKBUY</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-title">HỖ TRỢ KHÁCH HÀNG</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Phương thức thanh toán</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-title">LIÊN HỆ</div>
+                    <ul class="footer-links">
+                        <li>123 Đường Sách, Quận 1, TP.HCM</li>
+                        <li>1900 123 456</li>
+                        <li>support@bookbuy.vn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Công ty CP BookBuy. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
