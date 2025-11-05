@@ -203,3 +203,35 @@ document.addEventListener("DOMContentLoaded", () => {
   if (overlay) overlay.addEventListener("click", closePopup);
   if (closeBtn) closeBtn.addEventListener("click", closePopup);
 });
+
+// === Hiển thị danh sách sản phẩm (không chia thể loại) ===
+export function renderFilteredProducts(list) {
+  const main = document.getElementById("main-content");
+  if (!main) return;
+
+  // Nếu danh sách trống
+  if (!list || list.length === 0) {
+    main.innerHTML = `<div class="no-result">Không tìm thấy sản phẩm nào.</div>`;
+    return;
+  }
+
+  // Tạo HTML hiển thị tất cả sản phẩm trong 1 khung
+  const html = `
+    <div class="section-box">
+      <div class="header-box">
+        <h1>KẾT QUẢ LỌC SẢN PHẨM</h1>
+      </div>
+      <div class="content-box" id="filtered-product-list" 
+           style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;">
+        ${list.map(p => `
+          <div class="product-card" id="${p.id}">
+            <img src="${p.img || "./img/Error.png"}" alt="${p.title}">
+            <p class="title">${p.title}</p>
+            <p class="price">${p.price.toLocaleString("vi-VN")} VNĐ</p>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+  main.innerHTML = html;
+}
