@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - BookStore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .checkout-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .checkout-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .order-summary {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .payment-methods {
+            margin: 20px 0;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-option:hover {
+            border-color: #3498db;
+        }
+        
+        .payment-option input {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .payment-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .order-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .book-image {
+            width: 80px;
+            height: 100px;
+            background-color: #f0f0f0;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .book-details {
+            flex: 1;
+        }
+        
+        .book-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .book-author {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .book-price {
+            font-weight: 500;
+            color: #e74c3c;
+        }
+        
+        .quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        
+        .quantity button {
+            background: #f0f0f0;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .quantity span {
+            margin: 0 10px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 5px 0;
+        }
+        
+        .summary-total {
+            font-weight: bold;
+            font-size: 18px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-container {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">📚 BookStore</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1>Thanh Toán</h1>
+        
+        <div class="checkout-container">
+            <!-- Phần thông tin thanh toán -->
+            <div class="checkout-form">
+                <h2>Thông tin giao hàng</h2>
+                
+                <div class="form-group">
+                    <label for="fullname">Họ và tên</label>
+                    <input type="text" id="fullname" placeholder="Nguyễn Văn A">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="example@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <input type="tel" id="phone" placeholder="0123 456 789">
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Địa chỉ</label>
+                    <input type="text" id="address" placeholder="Số nhà, đường, phường/xã">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">Thành phố</label>
+                        <select id="city">
+                            <option value="">Chọn thành phố</option>
+                            <option value="hanoi">Hà Nội</option>
+                            <option value="hcm">TP. Hồ Chí Minh</option>
+                            <option value="danang">Đà Nẵng</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="district">Quận/Huyện</label>
+                        <select id="district">
+                            <option value="">Chọn quận/huyện</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="note">Ghi chú (tùy chọn)</label>
+                    <textarea id="note" rows="3" placeholder="Ghi chú về đơn hàng..."></textarea>
+                </div>
+                
+                <h2>Phương thức thanh toán</h2>
+                
+                <div class="payment-methods">
+                    <div class="payment-option">
+                        <input type="radio" id="cod" name="payment" checked>
+                        <span class="payment-icon">💵</span>
+                        <label for="cod">Thanh toán khi nhận hàng (COD)</label>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <input type="radio" id="bank" name="payment">
+                        <span class="payment-icon">🏦</span>
+                        <label for="bank">Chuyển khoản ngân hàng</label>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <input type="radio" id="momo" name="payment">
+                        <span class="payment-icon">📱</span>
+                        <label for="momo">Ví MoMo</label>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <input type="radio" id="card" name="payment">
+                        <span class="payment-icon">💳</span>
+                        <label for="card">Thẻ tín dụng/ghi nợ</label>
+                    </div>
+                </div>
+                
+                <button class="btn" id="complete-order">Hoàn tất đơn hàng</button>
+            </div>
+            
+            <!-- Phần tóm tắt đơn hàng -->
+            <div class="order-summary">
+                <h2>Đơn hàng của bạn</h2>
+                
+                <div class="order-item">
+                    <div class="book-image">Hình sách</div>
+                    <div class="book-details">
+                        <div class="book-title">Nhà Giả Kim</div>
+                        <div class="book-author">Paulo Coelho</div>
+                        <div class="book-price">75.000 ₫</div>
+                        <div class="quantity">
+                            <button>-</button>
+                            <span>1</span>
+                            <button>+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-item">
+                    <div class="book-image">Hình sách</div>
+                    <div class="book-details">
+                        <div class="book-title">Đắc Nhân Tâm</div>
+                        <div class="book-author">Dale Carnegie</div>
+                        <div class="book-price">89.000 ₫</div>
+                        <div class="quantity">
+                            <button>-</button>
+                            <span>1</span>
+                            <button>+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-item">
+                    <div class="book-image">Hình sách</div>
+                    <div class="book-details">
+                        <div class="book-title">Tôi Tài Giỏi, Bạn Cũng Thế!</div>
+                        <div class="book-author">Adam Khoo</div>
+                        <div class="book-price">95.000 ₫</div>
+                        <div class="quantity">
+                            <button>-</button>
+                            <span>1</span>
+                            <button>+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-row">
+                    <span>Tạm tính:</span>
+                    <span>259.000 ₫</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span>Phí vận chuyển:</span>
+                    <span>15.000 ₫</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span>Giảm giá:</span>
+                    <span>-10.000 ₫</span>
+                </div>
+                
+                <div class="summary-row summary-total">
+                    <span>Tổng cộng:</span>
+                    <span>264.000 ₫</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 BookStore. Tất cả các quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Xử lý nút hoàn tất đơn hàng
+            document.getElementById('complete-order').addEventListener('click', function() {
+                // Kiểm tra các trường bắt buộc
+                const fullname = document.getElementById('fullname').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                const city = document.getElementById('city').value;
+                
+                if (!fullname || !email || !phone || !address || !city) {
+                    alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+                    return;
+                }
+                
+                // Giả lập xử lý thanh toán
+                alert('Đơn hàng của bạn đã được đặt thành công! Cảm ơn bạn đã mua sắm tại BookStore.');
+            });
+            
+            // Xử lý thay đổi số lượng sách
+            const quantityButtons = document.querySelectorAll('.quantity button');
+            quantityButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const span = this.parentElement.querySelector('span');
+                    let quantity = parseInt(span.textContent);
+                    
+                    if (this.textContent === '+') {
+                        quantity++;
+                    } else if (this.textContent === '-' && quantity > 1) {
+                        quantity--;
+                    }
+                    
+                    span.textContent = quantity;
+                    
+                    // Cập nhật tổng tiền (trong thực tế sẽ cần tính toán lại)
+                    // Ở đây chỉ là demo nên để đơn giản
+                });
+            });
+        });
+    </script>
+</body>
+</html>
