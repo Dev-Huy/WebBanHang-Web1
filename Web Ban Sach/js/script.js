@@ -36,3 +36,33 @@ document.querySelector("#filter-btn").addEventListener("click", (e) => {
 document.getElementById("filter-btn").addEventListener("click", (e) => {
     document.getElementById("filter-form").classList.toggle("active");
 })
+
+import { productList } from "./loadData.js";
+import { renderFilteredProducts } from "./render.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const priceSelect = document.querySelector("#filter-form select");
+  const minInput = document.getElementById("minRange");
+  const maxInput = document.getElementById("maxRange");
+
+  priceSelect.addEventListener("change", () => {
+    let sorted = [...productList];
+    if (priceSelect.value === "Thấp đến cao") {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (priceSelect.value === "Cao đến thấp") {
+      sorted.sort((a, b) => b.price - a.price);
+    } else {
+      return; 
+    }
+    renderFilteredProducts(sorted);
+  });
+    
+  [minInput, maxInput].forEach(input => {
+    input.addEventListener("change", () => {
+      const min = parseInt(minInput.value) || 0;
+      const max = parseInt(maxInput.value) || Infinity;
+      const filtered = productList.filter(p => p.price >= min && p.price <= max);
+      renderFilteredProducts(filtered);
+    });
+  });
+});
