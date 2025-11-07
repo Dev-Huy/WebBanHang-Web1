@@ -1,448 +1,306 @@
-// checkout.js
-
-// Khởi tạo khi trang đã tải xong
+// checkout.js - Xử lý tương tác trên trang thanh toán BookBuy
 document.addEventListener('DOMContentLoaded', function() {
-    initializeCheckoutPage();
-});
-
-function initializeCheckoutPage() {
-    // Khởi tạo các sự kiện và chức năng
-    initializePaymentMethods();
-    initializePromoCode();
-    initializeCheckoutButton();
-    initializeFormValidation();
-    
-    console.log('Trang thanh toán BookBuy đã sẵn sàng');
-}
-
-// Xử lý chọn phương thức thanh toán
-function initializePaymentMethods() {
+    // Xử lý chọn phương thức thanh toán
     const paymentMethods = document.querySelectorAll('.payment-method');
     
     paymentMethods.forEach(method => {
         method.addEventListener('click', function() {
-            // Bỏ chọn tất cả các phương thức khác
+            // Bỏ chọn tất cả phương thức thanh toán
             paymentMethods.forEach(m => {
                 m.classList.remove('selected');
-                const radio = m.querySelector('input[type="radio"]');
-                radio.checked = false;
+                m.querySelector('input').checked = false;
             });
             
-            // Chọn phương thức hiện tại
+            // Chọn phương thức thanh toán được click
             this.classList.add('selected');
-            const currentRadio = this.querySelector('input[type="radio"]');
-            currentRadio.checked = true;
-            
-            // Hiển thị thông tin bổ sung nếu cần
-            showPaymentMethodInfo(this);
+            this.querySelector('input').checked = true;
         });
     });
-}
 
-// Hiển thị thông tin bổ sung cho phương thức thanh toán
-function showPaymentMethodInfo(methodElement) {
-    const paymentName = methodElement.querySelector('.payment-name').textContent;
-    console.log(`Phương thức thanh toán đã chọn: ${paymentName}`);
-    
-    // Ẩn tất cả các thông tin bổ sung trước
-    hideAllPaymentDetails();
-    
-    // Hiển thị thông tin chi tiết tùy theo phương thức
-    if (paymentName.includes('Chuyển khoản ngân hàng')) {
-        showBankTransferDetails();
-    } else if (paymentName.includes('Ví điện tử MoMo')) {
-        showMoMoDetails();
-    } else if (paymentName.includes('Thẻ tín dụng')) {
-        showCardDetails();
-    }
-}
-
-// Ẩn tất cả các phần thông tin thanh toán chi tiết
-function hideAllPaymentDetails() {
-    const existingDetails = document.querySelector('.payment-details');
-    if (existingDetails) {
-        existingDetails.remove();
-    }
-}
-
-// Hiển thị thông tin chuyển khoản ngân hàng
-function showBankTransferDetails() {
-    const paymentBox = document.querySelector('.checkout-box:has(.payment-methods)');
-    
-    const bankDetails = document.createElement('div');
-    bankDetails.className = 'payment-details';
-    bankDetails.innerHTML = `
-        <div class="bank-info" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #2c5aa0;">
-            <h4 style="margin-bottom: 10px; color: #2c5aa0;">Thông tin chuyển khoản</h4>
-            <div style="font-size: 14px;">
-                <p><strong>Ngân hàng:</strong> Techcombank</p>
-                <p><strong>Số tài khoản:</strong> 1903 6666 8888</p>
-                <p><strong>Chủ tài khoản:</strong> CÔNG TY CP BOOKBUY</p>
-                <p><strong>Nội dung chuyển khoản:</strong> Mã đơn hàng của bạn</p>
-                <p style="color: #666; font-style: italic;">Vui lòng chuyển khoản trong vòng 24 giờ để đảm bảo đơn hàng được xử lý.</p>
-            </div>
-        </div>
-    `;
-    
-    paymentBox.appendChild(bankDetails);
-}
-
-// Hiển thị thông tin ví MoMo
-function showMoMoDetails() {
-    const paymentBox = document.querySelector('.checkout-box:has(.payment-methods)');
-    
-    const momoDetails = document.createElement('div');
-    momoDetails.className = 'payment-details';
-    momoDetails.innerHTML = `
-        <div class="momo-info" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #ae2070;">
-            <h4 style="margin-bottom: 10px; color: #ae2070;">Thanh toán bằng MoMo</h4>
-            <div style="font-size: 14px;">
-                <p>Khi nhấn "HOÀN TẤT ĐƠN HÀNG", ứng dụng MoMo sẽ tự động mở.</p>
-                <p>Vui lòng xác nhận thanh toán trong ứng dụng MoMo của bạn.</p>
-                <p style="color: #666; font-style: italic;">Hỗ trợ: 1900 123 456 (Miễn phí)</p>
-            </div>
-        </div>
-    `;
-    
-    paymentBox.appendChild(momoDetails);
-}
-
-// Hiển thị thông tin thẻ tín dụng/ghi nợ
-function showCardDetails() {
-    const paymentBox = document.querySelector('.checkout-box:has(.payment-methods)');
-    
-    const cardDetails = document.createElement('div');
-    cardDetails.className = 'payment-details';
-    cardDetails.innerHTML = `
-        <div class="card-info" style="margin-top: 20px;">
-            <h4 style="margin-bottom: 15px; color: #2c5aa0;">Thông tin thẻ</h4>
-            <div class="form-group">
-                <label class="form-label">Số thẻ</label>
-                <input type="text" class="form-control card-input" placeholder="1234 5678 9012 3456" maxlength="19">
-            </div>
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px;">
-                <div class="form-group">
-                    <label class="form-label">Ngày hết hạn (MM/YY)</label>
-                    <input type="text" class="form-control card-input" placeholder="12/25" maxlength="5">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">CVV</label>
-                    <input type="text" class="form-control card-input" placeholder="123" maxlength="3">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Tên chủ thẻ</label>
-                <input type="text" class="form-control card-input" placeholder="NGUYEN VAN A">
-            </div>
-            <div style="display: flex; align-items: center; margin-top: 10px;">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDQ4IDk2YzAgMTcuNy0xNC4zIDMyLTMyIDMySDk2Yy0xNy43IDAtMzItMTQuMy0zMi0zMnMxNC4zLTMyIDMyLTMyaDMyMGMxNy43IDAgMzIgMTQuMyAzMiAzMnpNNDE2IDQxNmMwIDE3LjctMTQuMyAzMi0zMiAzMkg5NmMtMTcuNyAwLTMyLTE0LjMtMzItMzJzMTQuMy0zMiAzMi0zMmgzMjBjMTcuNyAwIDMyIDE0LjMgMzIgMzJ6TTMyIDI1NmMwLTE3LjcgMTQuMy0zMiAzMi0zMmgzMjBjMTcuNyAwIDMyIDE0LjMgMzIgMzJzLTE0LjMgMzItMzIgMzJINjRjLTE3LjcgMC0zMi0xNC4zLTMyLTMyeiIvPjwvc3ZnPg==" style="width: 40px; height: 25px; background: #1a1f71; padding: 5px; border-radius: 3px; margin-right: 10px;">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDQ4IDk2YzAgMTcuNy0xNC4zIDMyLTMyIDMySDk2Yy0xNy43IDAtMzItMTQuMy0zMi0zMnMxNC4zLTMyIDMyLTMyaDMyMGMxNy43IDAgMzIgMTQuMyAzMiAzMnpNNDE2IDQxNmMwIDE3LjctMTQuMyAzMi0zMiAzMkg5NmMtMTcuNyAwLTMyLTE0LjMtMzItMzJzMTQuMy0zMiAzMi0zMmgzMjBjMTcuNyAwIDMyIDE0LjMgMzIgMzJ6TTMyIDI1NmMwLTE3LjcgMTQuMy0zMiAzMi0zMmgzMjBjMTcuNyAwIDMyIDE0LjMgMzIgMzJzLTE0LjMgMzItMzIgMzJINjRjLTE3LjcgMC0zMi0xNC4zLTMyLTMyeiIvPjwvc3ZnPg==" style="width: 40px; height: 25px; background: #cc0000; padding: 5px; border-radius: 3px; margin-right: 10px;">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDQ4IDk2YzAgMTcuNy0xNC4zIDMyLTMyIDMySDk2Yy0xNy3zMTQuMy0zMiAzMi0zMmgzMjBjMTcuNyAwIDMyIDE0LjMgMzIgMzJ6TTQxNiA0MTZjMCAxNy43LTE0LjMgMzItMzIgMzJINjRjLTE3LjcgMC0zMi0xNC4zLTMyLTMyczE0LjMtMzIgMzItMzJoMzIwYzE3LjcgMCAzMiAxNC4zIDMyIDMyek0zMiAyNTZjMC0xNy43IDE0LjMtMzIgMzItMzJoMzIwYzE3LjcgMCAzMiAxNC4zIDMyIDMycy0xNC4zIDMyLTMyIDMySDY0Yy0xNy3zLTMyLTE0LjMtMzItMzJ6Ii8+PC9zdmc+" style="width: 40px; height: 25px; background: #f7981d; padding: 5px; border-radius: 3px;">
-            </div>
-        </div>
-    `;
-    
-    paymentBox.appendChild(cardDetails);
-    
-    // Thêm sự kiện format cho input thẻ
-    const cardInputs = document.querySelectorAll('.card-input');
-    cardInputs.forEach(input => {
-        if (input.placeholder.includes('Số thẻ')) {
-            input.addEventListener('input', formatCardNumber);
-        } else if (input.placeholder.includes('MM/YY')) {
-            input.addEventListener('input', formatExpiryDate);
-        } else if (input.placeholder.includes('CVV')) {
-            input.addEventListener('input', formatCVV);
+    // Xử lý nút áp dụng mã giảm giá
+    const promoBtn = document.querySelector('.promo-btn');
+    promoBtn.addEventListener('click', function() {
+        const promoInput = document.querySelector('.promo-input');
+        const promoCode = promoInput.value.trim();
+        
+        if (promoCode) {
+            // Hiển thị thông báo
+            showNotification(`Đã áp dụng mã giảm giá: ${promoCode}`, 'success');
+            
+            // Ở đây có thể thêm logic xử lý mã giảm giá thực tế
+            // Ví dụ: gọi API để kiểm tra mã giảm giá
+            applyPromoCode(promoCode);
+        } else {
+            showNotification('Vui lòng nhập mã giảm giá', 'error');
         }
     });
-}
 
-// Định dạng số thẻ (thêm khoảng trắng sau mỗi 4 số)
-function formatCardNumber(e) {
-    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    let formattedValue = '';
-    
-    for (let i = 0; i < value.length; i++) {
-        if (i > 0 && i % 4 === 0) {
-            formattedValue += ' ';
-        }
-        formattedValue += value[i];
-    }
-    
-    e.target.value = formattedValue;
-}
-
-// Định dạng ngày hết hạn (MM/YY)
-function formatExpiryDate(e) {
-    let value = e.target.value.replace(/[^0-9]/g, '');
-    
-    if (value.length >= 2) {
-        e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
-    } else {
-        e.target.value = value;
-    }
-}
-
-// Định dạng CVV (chỉ cho phép 3 số)
-function formatCVV(e) {
-    e.target.value = e.target.value.replace(/[^0-9]/g, '').substring(0, 3);
-}
-
-// Xử lý mã giảm giá
-function initializePromoCode() {
-    const promoBtn = document.querySelector('.promo-btn');
+    // Xử lý nhấn Enter trong ô mã giảm giá
     const promoInput = document.querySelector('.promo-input');
-    
-    promoBtn.addEventListener('click', applyPromoCode);
     promoInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            applyPromoCode();
+            promoBtn.click();
         }
     });
-}
 
-function applyPromoCode() {
-    const promoInput = document.querySelector('.promo-input');
-    const promoCode = promoInput.value.trim();
-    
-    if (!promoCode) {
-        showMessage('Vui lòng nhập mã giảm giá', 'error');
-        return;
-    }
-    
-    // Hiệu ứng loading
-    const promoBtn = document.querySelector('.promo-btn');
-    const originalText = promoBtn.textContent;
-    promoBtn.textContent = 'Đang xử lý...';
-    promoBtn.disabled = true;
-    
-    // Giả lập kiểm tra mã giảm giá (trong thực tế sẽ gọi API)
-    setTimeout(() => {
-        const validPromoCodes = {
+    // Xử lý nút hoàn tất đơn hàng
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    checkoutBtn.addEventListener('click', function() {
+        const selectedPayment = document.querySelector('.payment-method.selected');
+        
+        if (selectedPayment) {
+            const paymentName = selectedPayment.querySelector('.payment-name').textContent;
+            
+            // Hiển thị xác nhận đơn hàng
+            showOrderConfirmation(paymentName);
+        } else {
+            showNotification('Vui lòng chọn phương thức thanh toán', 'error');
+        }
+    });
+
+    // Hàm áp dụng mã giảm giá
+    function applyPromoCode(code) {
+        // Giả lập việc kiểm tra mã giảm giá
+        const validCodes = {
             'SALE10': 10,
             'SALE20': 20,
-            'BOOKLOVER': 15,
-            'WELCOME': 5
+            'BOOKBUY': 15
         };
         
-        if (validPromoCodes[promoCode.toUpperCase()]) {
-            const discount = validPromoCodes[promoCode.toUpperCase()];
-            updateOrderSummary(discount, promoCode.toUpperCase());
-            showMessage(`Áp dụng thành công mã ${promoCode.toUpperCase()}! Giảm ${discount}%`, 'success');
-            promoInput.value = '';
+        if (validCodes[code]) {
+            const discount = validCodes[code];
+            const currentTotal = 279000; // Tổng tiền hiện tại
+            const newTotal = currentTotal - (currentTotal * discount / 100);
+            
+            // Cập nhật giao diện với giảm giá mới
+            updateOrderSummary(discount, newTotal);
+            showNotification(`Áp dụng thành công mã giảm giá! Giảm ${discount}%`, 'success');
         } else {
-            showMessage('Mã giảm giá không hợp lệ hoặc đã hết hạn', 'error');
+            showNotification('Mã giảm giá không hợp lệ hoặc đã hết hạn', 'error');
+        }
+    }
+
+    // Hàm cập nhật tổng đơn hàng sau khi áp dụng mã giảm giá
+    function updateOrderSummary(discount, newTotal) {
+        // Tìm phần tử giảm giá
+        const discountElement = document.querySelector('.summary-row:nth-child(3) span:last-child');
+        const totalElement = document.querySelector('.summary-total span:last-child');
+        
+        // Cập nhật giá trị giảm giá
+        discountElement.textContent = `-${discount}%`;
+        discountElement.style.color = '#28a745';
+        
+        // Cập nhật tổng tiền mới
+        totalElement.textContent = `${formatCurrency(newTotal)} ₫`;
+    }
+
+    // Hàm hiển thị thông báo
+    function showNotification(message, type) {
+        // Tạo phần tử thông báo
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        
+        // Thêm CSS cho thông báo
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            max-width: 300px;
+        `;
+        
+        // Màu sắc theo loại thông báo
+        if (type === 'success') {
+            notification.style.backgroundColor = '#28a745';
+        } else if (type === 'error') {
+            notification.style.backgroundColor = '#dc3545';
+        } else {
+            notification.style.backgroundColor = '#2c5aa0';
         }
         
-        promoBtn.textContent = originalText;
-        promoBtn.disabled = false;
-    }, 1500);
-}
-
-// Cập nhật tổng đơn hàng khi áp dụng mã giảm giá
-function updateOrderSummary(discountPercent, promoCode) {
-    const summaryRows = document.querySelectorAll('.summary-row');
-    const tempTotal = 284000; // Tạm tính
-    const shippingFee = 15000; // Phí vận chuyển
-    
-    // Tính toán giảm giá
-    const discountAmount = Math.round(tempTotal * discountPercent / 100);
-    const finalTotal = tempTotal + shippingFee - discountAmount;
-    
-    // Cập nhật dòng giảm giá
-    if (document.querySelector('.discount-row')) {
-        document.querySelector('.discount-row').remove();
-    }
-    
-    const discountRow = document.createElement('div');
-    discountRow.className = 'summary-row discount-row';
-    discountRow.innerHTML = `
-        <span>Giảm giá (${promoCode}):</span>
-        <span style="color: #28a745;">-${formatCurrency(discountAmount)}</span>
-    `;
-    
-    // Chèn trước dòng tổng cộng
-    summaryRows[summaryRows.length - 1].parentNode.insertBefore(discountRow, summaryRows[summaryRows.length - 1]);
-    
-    // Cập nhật tổng cộng
-    document.querySelector('.summary-total span:last-child').textContent = formatCurrency(finalTotal);
-    
-    // Lưu thông tin giảm giá để sử dụng sau
-    window.currentDiscount = {
-        code: promoCode,
-        percent: discountPercent,
-        amount: discountAmount
-    };
-}
-
-// Định dạng tiền tệ
-function formatCurrency(amount) {
-    return new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND'
-    }).format(amount);
-}
-
-// Xử lý nút hoàn tất đơn hàng
-function initializeCheckoutButton() {
-    const checkoutBtn = document.querySelector('.checkout-btn');
-    
-    checkoutBtn.addEventListener('click', processCheckout);
-}
-
-function processCheckout() {
-    const checkoutBtn = document.querySelector('.checkout-btn');
-    
-    // Kiểm tra phương thức thanh toán
-    const selectedPayment = document.querySelector('.payment-method.selected');
-    if (!selectedPayment) {
-        showMessage('Vui lòng chọn phương thức thanh toán', 'error');
-        return;
-    }
-    
-    // Hiệu ứng loading
-    checkoutBtn.textContent = 'ĐANG XỬ LÝ...';
-    checkoutBtn.disabled = true;
-    
-    // Giả lập xử lý thanh toán
-    setTimeout(() => {
-        showSuccessModal();
-        checkoutBtn.textContent = 'HOÀN TẤT ĐƠN HÀNG';
-        checkoutBtn.disabled = false;
-    }, 2000);
-}
-
-// Hiển thị modal thành công
-function showSuccessModal() {
-    const modal = document.createElement('div');
-    modal.className = 'success-modal';
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-    `;
-    
-    modal.innerHTML = `
-        <div style="background: white; padding: 30px; border-radius: 10px; text-align: center; max-width: 400px; width: 90%;">
-            <div style="font-size: 48px; color: #28a745; margin-bottom: 15px;">✓</div>
-            <h2 style="color: #28a745; margin-bottom: 15px;">Đặt Hàng Thành Công!</h2>
-            <p style="margin-bottom: 20px; line-height: 1.5;">Cảm ơn bạn đã mua hàng tại BookBuy. Đơn hàng của bạn đã được tiếp nhận và đang được xử lý.</p>
-            <p style="margin-bottom: 20px; font-weight: bold;">Mã đơn hàng: #BB${Date.now().toString().slice(-6)}</p>
-            <button id="continueShopping" style="background: #2c5aa0; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px;">
-                Tiếp Tục Mua Sắm
-            </button>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // Sự kiện đóng modal
-    document.getElementById('continueShopping').addEventListener('click', function() {
-        window.location.href = 'index.html'; // Chuyển về trang chủ
-    });
-    
-    // Đóng modal khi click bên ngoài
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            document.body.removeChild(modal);
-        }
-    });
-}
-
-// Hiển thị thông báo
-function showMessage(message, type) {
-    // Xóa thông báo cũ nếu có
-    const oldMessage = document.querySelector('.message-toast');
-    if (oldMessage) {
-        oldMessage.remove();
-    }
-    
-    const toast = document.createElement('div');
-    toast.className = `message-toast ${type}`;
-    toast.textContent = message;
-    toast.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        border-radius: 5px;
-        color: white;
-        font-weight: 500;
-        z-index: 1001;
-        animation: slideIn 0.3s ease;
-        max-width: 300px;
-    `;
-    
-    if (type === 'success') {
-        toast.style.background = '#28a745';
-    } else if (type === 'error') {
-        toast.style.background = '#dc3545';
-    } else {
-        toast.style.background = '#17a2b8';
-    }
-    
-    document.body.appendChild(toast);
-    
-    // Tự động ẩn sau 3 giây
-    setTimeout(() => {
-        if (toast.parentNode) {
-            toast.style.animation = 'slideOut 0.3s ease';
+        // Thêm vào body
+        document.body.appendChild(notification);
+        
+        // Tự động xóa sau 3 giây
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(100%)';
             setTimeout(() => {
-                if (toast.parentNode) {
-                    toast.parentNode.removeChild(toast);
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
                 }
             }, 300);
-        }
-    }, 3000);
-}
+        }, 3000);
+    }
 
-// Khởi tạo validation cho form
-function initializeFormValidation() {
-    const noteTextarea = document.querySelector('textarea');
-    
-    noteTextarea.addEventListener('input', function() {
-        if (this.value.length > 200) {
-            this.value = this.value.substring(0, 200);
-            showMessage('Ghi chú không được vượt quá 200 ký tự', 'error');
-        }
-    });
-}
+    // Hàm hiển thị xác nhận đơn hàng
+    function showOrderConfirmation(paymentMethod) {
+        // Tạo overlay
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        `;
+        
+        // Tạo hộp xác nhận
+        const confirmationBox = document.createElement('div');
+        confirmationBox.style.cssText = `
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        `;
+        
+        // Nội dung xác nhận
+        confirmationBox.innerHTML = `
+            <h2 style="color: #2c5aa0; margin-bottom: 15px;">Xác Nhận Đơn Hàng</h2>
+            <p style="margin-bottom: 20px;">Bạn có chắc chắn muốn hoàn tất đơn hàng với phương thức thanh toán <strong>${paymentMethod}</strong>?</p>
+            <p style="margin-bottom: 25px; font-size: 14px; color: #666;">Sau khi xác nhận, đơn hàng sẽ được xử lý và giao đến địa chỉ của bạn.</p>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="confirmOrder" style="padding: 10px 20px; background-color: #2c5aa0; color: white; border: none; border-radius: 4px; cursor: pointer;">Xác Nhận</button>
+                <button id="cancelOrder" style="padding: 10px 20px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">Hủy</button>
+            </div>
+        `;
+        
+        // Thêm vào DOM
+        overlay.appendChild(confirmationBox);
+        document.body.appendChild(overlay);
+        
+        // Xử lý nút xác nhận
+        document.getElementById('confirmOrder').addEventListener('click', function() {
+            // Ở đây có thể thêm logic gửi đơn hàng đến server
+            processOrder();
+            
+            // Đóng hộp xác nhận
+            document.body.removeChild(overlay);
+            
+            // Chuyển đến trang hoàn tất (giả lập)
+            setTimeout(() => {
+                showOrderSuccess();
+            }, 500);
+        });
+        
+        // Xử lý nút hủy
+        document.getElementById('cancelOrder').addEventListener('click', function() {
+            document.body.removeChild(overlay);
+        });
+        
+        // Đóng khi click ra ngoài
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                document.body.removeChild(overlay);
+            }
+        });
+    }
 
-// Thêm CSS animation cho thông báo
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
+    // Hàm xử lý đơn hàng (giả lập)
+    function processOrder() {
+        // Ở đây sẽ là logic gửi đơn hàng đến server
+        // Ví dụ: gọi API để tạo đơn hàng
+        console.log('Đang xử lý đơn hàng...');
+        
+        // Giả lập thời gian xử lý
+        showNotification('Đang xử lý đơn hàng...', 'info');
     }
-    
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
+
+    // Hàm hiển thị trang thành công (giả lập)
+    function showOrderSuccess() {
+        // Tạo overlay thành công
+        const successOverlay = document.createElement('div');
+        successOverlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        `;
+        
+        // Tạo hộp thông báo thành công
+        const successBox = document.createElement('div');
+        successBox.style.cssText = `
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        `;
+        
+        // Nội dung thông báo thành công
+        successBox.innerHTML = `
+            <div style="font-size: 48px; color: #28a745; margin-bottom: 20px;">✓</div>
+            <h2 style="color: #28a745; margin-bottom: 15px;">Đặt Hàng Thành Công!</h2>
+            <p style="margin-bottom: 20px;">Cảm ơn bạn đã đặt hàng tại BookBuy. Đơn hàng của bạn đã được xác nhận và sẽ được giao trong thời gian sớm nhất.</p>
+            <p style="margin-bottom: 25px; font-size: 14px; color: #666;">Mã đơn hàng: <strong>#BB${Math.floor(100000 + Math.random() * 900000)}</strong></p>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="backToHome" style="padding: 10px 20px; background-color: #2c5aa0; color: white; border: none; border-radius: 4px; cursor: pointer;">Về Trang Chủ</button>
+                <button id="viewOrder" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">Xem Đơn Hàng</button>
+            </div>
+        `;
+        
+        // Thêm vào DOM
+        successOverlay.appendChild(successBox);
+        document.body.appendChild(successOverlay);
+        
+        // Xử lý nút về trang chủ
+        document.getElementById('backToHome').addEventListener('click', function() {
+            // Chuyển hướng về trang chủ (giả lập)
+            window.location.href = 'index.html';
+        });
+        
+        // Xử lý nút xem đơn hàng
+        document.getElementById('viewOrder').addEventListener('click', function() {
+            // Chuyển hướng đến trang chi tiết đơn hàng (giả lập)
+            window.location.href = 'order-details.html';
+        });
     }
-    
-    .card-input:focus {
-        border-color: #2c5aa0;
-        box-shadow: 0 0 0 2px rgba(44, 90, 160, 0.2);
+
+    // Hàm định dạng tiền tệ
+    function formatCurrency(amount) {
+        return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-`;
-document.head.appendChild(style);
+
+    // Thêm CSS cho các phần tử động
+    const style = document.createElement('style');
+    style.textContent = `
+        .notification {
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
