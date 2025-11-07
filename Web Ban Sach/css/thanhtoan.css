@@ -1,15 +1,15 @@
-/* Đặt lại và Kiểu cơ bản */
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
     background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
 }
 
 .container {
@@ -18,11 +18,13 @@ body {
     padding: 0 15px;
 }
 
-/* Kiểu cho Đầu trang */
+/* Header Styles */
 header {
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header-top {
@@ -30,7 +32,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
-    border-bottom: 1px solid #eee;
 }
 
 .logo {
@@ -40,73 +41,78 @@ header {
 }
 
 .header-support {
-    font-weight: 500;
     color: #666;
+    font-size: 14px;
 }
 
 .header-nav {
     display: flex;
-    padding: 15px 0;
+    background-color: #2c5aa0;
+    padding: 10px 0;
 }
 
 .header-nav a {
-    margin-right: 25px;
+    color: white;
     text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
+    padding: 0 15px;
+    font-size: 14px;
+    transition: opacity 0.3s;
 }
 
 .header-nav a:hover {
-    color: #2c5aa0;
+    opacity: 0.8;
 }
 
-/* Quy trình Thanh toán */
+/* Checkout Process */
 .checkout-process {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    position: relative;
-}
-
-.checkout-process::before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: #e0e0e0;
-    z-index: 1;
+    justify-content: center;
+    margin: 30px 0;
 }
 
 .process-step {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 150px;
     position: relative;
-    z-index: 2;
+}
+
+.process-step:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: -75px;
+    width: 150px;
+    height: 2px;
+    background-color: #ddd;
+    z-index: 1;
+}
+
+.process-step.completed:not(:last-child):after {
+    background-color: #2c5aa0;
 }
 
 .step-number {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #e0e0e0;
+    background-color: #ddd;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
     margin-bottom: 8px;
-    color: #fff;
+    z-index: 2;
 }
 
 .process-step.completed .step-number {
-    background-color: #28a745;
+    background-color: #2c5aa0;
 }
 
 .process-step.active .step-number {
     background-color: #2c5aa0;
+    color: white;
 }
 
 .step-text {
@@ -115,26 +121,32 @@ header {
     text-align: center;
 }
 
-.process-step.completed .step-text,
 .process-step.active .step-text {
-    color: #333;
-    font-weight: 500;
+    color: #2c5aa0;
+    font-weight: 600;
 }
 
-/* Nội dung Thanh toán */
+/* Checkout Content */
 .checkout-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    display: flex;
     gap: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+}
+
+.checkout-left {
+    flex: 2;
+}
+
+.checkout-right {
+    flex: 1;
 }
 
 .checkout-box {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    padding: 25px;
+    padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .box-title {
@@ -143,27 +155,26 @@ header {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
-    color: #2c5aa0;
 }
 
-/* Kiểu cho Form */
+/* Form Styles */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .form-label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
+    font-size: 14px;
     font-weight: 500;
 }
 
 .form-control {
     width: 100%;
-    padding: 12px 15px;
+    padding: 10px 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 15px;
-    transition: border-color 0.3s;
+    font-size: 14px;
 }
 
 .form-control:focus {
@@ -171,16 +182,16 @@ header {
     border-color: #2c5aa0;
 }
 
-.form-control:read-only {
+.form-control[readonly] {
     background-color: #f5f5f5;
     color: #666;
 }
 
-/* Phương thức Thanh toán */
+/* Payment Methods */
 .payment-methods {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 .payment-method {
@@ -188,7 +199,7 @@ header {
     align-items: center;
     padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s;
 }
@@ -199,11 +210,11 @@ header {
 
 .payment-method.selected {
     border-color: #2c5aa0;
-    background-color: #f0f5ff;
+    background-color: #f0f7ff;
 }
 
 .payment-method input {
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 .payment-icon {
@@ -213,15 +224,15 @@ header {
 
 .payment-name {
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 .payment-desc {
-    font-size: 14px;
+    font-size: 12px;
     color: #666;
 }
 
-/* Tóm tắt Đơn hàng */
+/* Order Summary */
 .order-item {
     display: flex;
     padding: 15px 0;
@@ -232,17 +243,16 @@ header {
     width: 60px;
     height: 80px;
     background-color: #f5f5f5;
-    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #999;
+    font-size: 12px;
     margin-right: 15px;
-    flex-shrink: 0;
 }
 
 .item-details {
-    flex-grow: 1;
+    flex: 1;
 }
 
 .item-name {
@@ -264,16 +274,16 @@ header {
 .summary-row {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #eee;
 }
 
 .summary-total {
-    font-size: 18px;
     font-weight: 600;
+    font-size: 18px;
     color: #2c5aa0;
     border-bottom: none;
-    margin-top: 10px;
+    padding-top: 15px;
 }
 
 .promo-code {
@@ -282,36 +292,30 @@ header {
 }
 
 .promo-input {
-    flex-grow: 1;
-    padding: 12px 15px;
+    flex: 1;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px 0 0 4px;
-    font-size: 15px;
 }
 
 .promo-btn {
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    padding: 0 20px;
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-left: none;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.promo-btn:hover {
-    background-color: #5a6268;
 }
 
 .checkout-btn {
     width: 100%;
+    padding: 15px;
     background-color: #2c5aa0;
     color: white;
     border: none;
-    padding: 15px;
+    border-radius: 4px;
     font-size: 16px;
     font-weight: 600;
-    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -320,25 +324,27 @@ header {
     background-color: #1e3d6f;
 }
 
-/* Kiểu cho Chân trang */
+/* Footer Styles */
 footer {
-    background-color: #2c3e50;
-    color: #fff;
+    background-color: #2c5aa0;
+    color: white;
     padding: 40px 0 20px;
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 30px;
 }
 
+.footer-column {
+    flex: 1;
+}
+
 .footer-title {
-    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 20px;
-    color: #ecf0f1;
+    margin-bottom: 15px;
+    font-size: 16px;
 }
 
 .footer-links {
@@ -346,96 +352,43 @@ footer {
 }
 
 .footer-links li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .footer-links a {
-    color: #bdc3c7;
+    color: white;
     text-decoration: none;
-    transition: color 0.3s;
+    font-size: 14px;
+    transition: opacity 0.3s;
 }
 
 .footer-links a:hover {
-    color: #ecf0f1;
+    opacity: 0.8;
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid #34495e;
-    color: #bdc3c7;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 14px;
 }
 
-/* Thiết kế Đáp ứng */
-@media (max-width: 992px) {
+/* Responsive */
+@media (max-width: 768px) {
     .checkout-content {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
     
     .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .header-top {
         flex-direction: column;
-        text-align: center;
-    }
-    
-    .logo {
-        margin-bottom: 10px;
-    }
-    
-    .header-nav {
-        justify-content: center;
+        gap: 30px;
     }
     
     .checkout-process {
         flex-wrap: wrap;
-        gap: 15px;
     }
     
-    .process-step {
-        flex: 1;
-        min-width: 120px;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 576px) {
-    .payment-method {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .payment-icon {
-        margin-bottom: 10px;
-    }
-    
-    .order-item {
-        flex-direction: column;
-    }
-    
-    .item-image {
-        margin-bottom: 10px;
-    }
-    
-    .promo-code {
-        flex-direction: column;
-    }
-    
-    .promo-input {
-        border-radius: 4px;
-        margin-bottom: 10px;
-    }
-    
-    .promo-btn {
-        border-radius: 4px;
-        padding: 12px;
+    .process-step:not(:last-child):after {
+        display: none;
     }
 }
