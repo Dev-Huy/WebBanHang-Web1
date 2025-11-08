@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="./css/quanlydondathang.css">
     <link rel="stylesheet" href="./css/quanlytonkho.css">
     <link rel="stylesheet" href="./css/quanlysanpham.css">
+    <link rel="stylesheet" href="./css/quanlytheloai.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <script type="module" src="./js/admin.js" defer></script>
     <script type="module" src="./js/loadData.js"></script>
     <script type="module" src="./js/quanLyNhapHang.js" defer></script>
@@ -17,6 +19,7 @@
     <script type="module" src="./js/quanlydondathang.js" defer></script>
     <script type="module" src="./js/quanlytonkho.js" defer></script>
     <script type="module" src="./js/quanlysanpham.js" defer></script>
+    <script type="module" src="./js/quanlytheloai.js" defer></script>
     <title>Admin</title>
 </head>
 
@@ -504,8 +507,79 @@
                     </div>
                 </div>
             </div>
+
+            <div class="tab-content" id="quanlytheloai">
+  <div class="main-content">
+    <div class="header">
+      <h2>Quản lý Thể loại</h2>
+      <button id="btnAddCategory" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i> Thêm thể loại
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span>Danh sách thể loại</span>
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="form-control" placeholder="Tìm kiếm thể loại..." id="searchCategoryInput">
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Mã thể loại</th>
+                <th>Tên thể loại</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="categoryTableBody">
+              <!-- Dữ liệu thể loại sẽ được thêm bằng JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal thêm/sửa thể loại -->
+  <div class="modal" id="modalCategory">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="categoryModalTitle">Thêm thể loại</h5>
+        <button type="button" class="btn-close" id="closeCategoryModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="categoryForm">
+          <div class="mb-3">
+            <label class="form-label">Mã thể loại</label>
+            <input type="text" class="form-control" id="categoryId" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tên thể loại</label>
+            <input type="text" class="form-control" id="categoryName" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="categoryStatus" checked>
+            <label class="form-check-label" for="categoryStatus">Hiển thị thể loại</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="cancelCategory">Hủy</button>
+        <button type="button" class="btn btn-primary" id="saveCategoryBtn">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>
+            
         </div>
     </div>
 </body>
+
 
 </html>
