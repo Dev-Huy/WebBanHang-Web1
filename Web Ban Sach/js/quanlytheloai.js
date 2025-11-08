@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   tabCategory.addEventListener("click", initCategoryManager);
+  if (window.location.hash === "#quanlytheloai") {
+  initCategoryManager();
 
   function initCategoryManager() {
     if (window.categoryManagerLoaded) return;
@@ -107,3 +109,4 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable();
   }
 });
+
