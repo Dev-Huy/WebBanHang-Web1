@@ -1,0 +1,56 @@
+#quanLyTonKho {
+  display: none;
+}
+#quanLyTonKho.active {
+  display: block;
+}
+
+#quanLyTonKho .filter {
+  margin-bottom: 15px;
+}
+
+#quanLyTonKho table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+#quanLyTonKho th, #quanLyTonKho td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+#quanLyTonKho th {
+  background: #0077b6;
+  color: white;
+}
+
+#quanLyTonKho .modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#quanLyTonKho .modal.hidden { display: none; }
+
+#quanLyTonKho .modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  position: relative;
+}
+#quanLyTonKho .close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#quanLyTonKho .canhbao {
+  color: red;
+  font-weight: bold;
+}

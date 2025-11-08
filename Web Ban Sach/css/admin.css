@@ -1,0 +1,264 @@
+:root {
+    --bg: #f4f6fb;
+    --card: #fff;
+    --accent: #4f46e5;
+    --muted: #6b7280;
+    --danger: #ef4444;
+    --success: #10b981;
+}
+
+body,
+html {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Segoe UI", sans-serif;
+    /* overflow-y: scroll; */
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+    gap: 20px;
+    padding: 25px;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#side_bar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #fff;
+    padding: 0;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+    /* z-index: 10; */
+    /* min-width: 220px; */
+    width: fit-content;
+}
+
+#logo {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+#side_bar #side_bar_btn {
+    height: 100%;
+    width: 100%;
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    gap: 10px;
+    margin: 0;
+}
+
+#side_bar #side_bar_btn li {
+    list-style: none;
+    /* border: 1px solid black;
+    border-radius: 5px; */
+    width: 100%;
+    min-height: 35px;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+#side_bar_btn li a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    color: black;
+    padding: 10px;
+}
+#side_bar_btn li a.active {
+    background-color: rgb(194, 193, 193);
+}
+#side_bar_btn li a:hover {
+    box-shadow: 3px 3px 50px rgba(0, 0, 0, 0.3);
+    color: orangered;
+}
+
+#side_bar #other {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+    flex: 1;
+}
+
+#side_bar #other li {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#other li a:hover {
+    box-shadow: 3px 3px 50px rgba(0, 0, 0, 0.3);
+    color: orangered;
+}
+
+#workspace {
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    flex: 4;
+    /* height: 1200px; */
+    margin-left: 280px;
+    overflow-y: auto;
+    /* padding: 20px; */
+}
+
+/* === Reset nhẹ nhàng === */
+
+/* === Nền chính === */
+.login-wrap {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+}
+
+/* === Thẻ login === */
+.login-card {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 350px;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+/* === Tiêu đề và mô tả === */
+.login-card h2 {
+  font-size: 1.6rem;
+  color: #4f46e5;
+  margin-bottom: 0.3rem;
+}
+
+.login-card .muted {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* === Ô nhập liệu === */
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-row input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.75rem;
+  outline: none;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.form-row input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+/* === Hành động === */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.form-actions label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.form-actions button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  justify-self: center;
+  font-weight: 600;
+  transition: background 0.25s ease;
+}
+
+.form-actions button:hover {
+  background: #4338ca;
+}
+
+/* === Lỗi === */
+.error {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  display: none; /* Ẩn mặc định */
+}
+
+/* === Gạch chia và note nhỏ === */
+hr {
+  margin: 1.5rem 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+small {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+/* === Hiệu ứng mượt === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* #container {
+    display: none;
+}
+
+#container.loggedin {
+    display: flex;
+} */
