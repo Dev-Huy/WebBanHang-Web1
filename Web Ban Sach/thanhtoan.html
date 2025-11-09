@@ -1,0 +1,46 @@
+<!-- thanhtoan.html -->
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thanh toán — Giỏ hàng</title>
+  <link rel="stylesheet" href="./css/thanhtoan.css">
+  <script type="module" src="./js/thanhtoan.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Thanh toán — Giỏ hàng của bạn</h1>
+      <div class="small">An toàn · Mã hoá SSL · Giao dịch nhanh</div>
+    </header>
+
+    <div class="layout">
+      <section class="card" id="cart-list">
+        <h2>Đơn hàng</h2>
+        <div id="items"></div>
+        <div id="empty" class="small" style="display:none;padding:12px">Giỏ hàng trống. Thêm ít nhất 1 sản phẩm để thanh toán.</div>
+      </section>
+
+      <aside class="card summary">
+        <h2>Tóm tắt thanh toán</h2>
+        <div class="line"><span>Tạm tính</span><span id="subtotal">0 ₫</span></div>
+        <div class="line"><span>Phí vận chuyển</span><span id="shipping">0 ₫</span></div>
+        <div class="line"><span>Giảm giá</span><span id="discount">0 ₫</span></div>
+        <div class="line total"><span>Tổng cộng</span><span id="total">0 ₫</span></div>
+
+        <input type="text" id="coupon" placeholder="Nhập mã giảm giá">
+        <button id="apply">Áp dụng</button>
+
+        <button id="pay" class="pay-btn" >Thanh toán</button>
+        <button id="backHome" class="back-btn">Quay về trang chính</button>
+
+        <div class="small">Bạn có thể chỉnh số lượng hoặc xóa sản phẩm trước khi thanh toán.</div>
+      </aside>
+    </div>
+  </div>
+  <div id="">
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+[
+    {
+        "id": "PN001",
+        "date": "2025/10/28",
+        "state": "Đã Hoàn Thành",
+        "totalCost": 2268000,
+        "productlist": [
+            {
+                "id": "SP001",
+                "cost": 189000,
+                "amount": 12
+            }
+        ]
+    },
+    {
+        "id": "PN002",
+        "date": "2025/10/27",
+        "state": "Đã Hoàn Thành",
+        "totalCost": 3380000,
+        "productlist": [
+            {
+                "id": "SP002",
+                "cost": 169000,
+                "amount": 20
+            }
+        ]
+    },
+    {
+        "id": "PN003",
+        "date": "2025/11/9",
+        "state": "Đã Hoàn Thành",
+        "totalCost": 450000,
+        "productlist": [
+            {
+                "id": "SP003",
+                "cost": 250000,
+                "amount": 28
+            },
+            {
+                "id": "SP004",
+                "cost": 250645,
+                "amount": 28
+            },
+            {
+                "id": "SP005",
+                "cost": 380567,
+                "amount": 15
+            },
+            {
+                "id": "SP006",
+                "cost": 165000,
+                "amount": 33
+            },
+            {
+                "id": "SP007",
+                "cost": 299432,
+                "amount": 21
+            },
+            {
+                "id": "SP008",
+                "cost": 155678,
+                "amount": 19
+            },
+            {
+                "id": "SP009",
+                "cost": 210987,
+                "amount": 38
+            },
+            {
+                "id": "SP010",
+                "cost": 340123,
+                "amount": 13
+            },
+            {
+                "id": "SP011",
+                "cost": 175000,
+                "amount": 25
+            },
+            {
+                "id": "SP012",
+                "cost": 315876,
+                "amount": 29
+            },
+            {
+                "id": "SP013",
+                "cost": 180321,
+                "amount": 12
+            },
+            {
+                "id": "SP014",
+                "cost": 275432,
+                "amount": 35
+            },
+            {
+                "id": "SP015",
+                "cost": 395678,
+                "amount": 18
+            },
+            {
+                "id": "SP016",
+                "cost": 158000,
+                "amount": 22
+            },
+            {
+                "id": "SP017",
+                "cost": 289432,
+                "amount": 31
+            },
+            {
+                "id": "SP018",
+                "cost": 160000,
+                "amount": 16
+            },
+            {
+                "id": "SP019",
+                "cost": 220987,
+                "amount": 27
+            },
+            {
+                "id": "SP020",
+                "cost": 330123,
+                "amount": 39
+            },
+            {
+                "id": "SP021",
+                "cost": 185000,
+                "amount": 14
+            },
+            {
+                "id": "SP022",
+                "cost": 305876,
+                "amount": 24
+            },
+            {
+                "id": "SP023",
+                "cost": 170321,
+                "amount": 30
+            },
+            {
+                "id": "SP024",
+                "cost": 198765,
+                "amount": 17
+            },
+            {
+                "id": "SP025",
+                "cost": 287654,
+                "amount": 36
+            },
+            {
+                "id": "SP026",
+                "cost": 354321,
+                "amount": 20
+            },
+            {
+                "id": "SP027",
+                "cost": 170000,
+                "amount": 26
+            },
+            {
+                "id": "SP028",
+                "cost": 234567,
+                "amount": 32
+            },
+            {
+                "id": "SP029",
+                "cost": 345678,
+                "amount": 13
+            },
+            {
+                "id": "SP030",
+                "cost": 162000,
+                "amount": 28
+            },
+            {
+                "id": "SP031",
+                "cost": 223344,
+                "amount": 15
+            },
+            {
+                "id": "SP032",
+                "cost": 334455,
+                "amount": 33
+            },
+            {
+                "id": "SP033",
+                "cost": 156000,
+                "amount": 21
+            },
+            {
+                "id": "SP034",
+                "cost": 256677,
+                "amount": 19
+            },
+            {
+                "id": "SP035",
+                "cost": 367788,
+                "amount": 38
+            },
+            {
+                "id": "SP036",
+                "cost": 178899,
+                "amount": 13
+            },
+            {
+                "id": "SP037",
+                "cost": 289900,
+                "amount": 25
+            },
+            {
+                "id": "SP038",
+                "cost": 390112,
+                "amount": 29
+            },
+            {
+                "id": "SP039",
+                "cost": 191223,
+                "amount": 12
+            },
+            {
+                "id": "SP040",
+                "cost": 292334,
+                "amount": 35
+            },
+            {
+                "id": "SP041",
+                "cost": 393445,
+                "amount": 18
+            },
+            {
+                "id": "SP042",
+                "cost": 194556,
+                "amount": 22
+            },
+            {
+                "id": "SP043",
+                "cost": 295667,
+                "amount": 31
+            }
+        ]
+    }
+]
